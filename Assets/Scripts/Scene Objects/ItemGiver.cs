@@ -5,11 +5,15 @@ using UnityEngine;
 public class ItemGiver : InteractableObject
 {
     [Header("Sprite Changer")]
-    public SpriteRenderer m_SpriteRenderer;
-    public Sprite usedSprite;
+    [SerializeField] private SpriteRenderer m_SpriteRenderer;
+    [SerializeField] private Sprite usedSprite;
+
+    [Header("Item Giver")]
+    [SerializeField] private ItemBase item;
+    [SerializeField] private int amountGiven;
 
     [Header("First Interaction")]
-    public bool firstInteractDataChange;
+    [SerializeField] private bool firstInteractDataChange;
 
     protected override void OnFirstInteract()
     {
@@ -21,18 +25,12 @@ public class ItemGiver : InteractableObject
         }
     }
 
-    public override void PlayerDataChange()
-    {
-        // base.PlayerDataChange(change);
-
-        GetItem();
-    }
-
     public virtual void GetItem()
     {
         m_SpriteRenderer.sprite = usedSprite;
 
-        // InventoryManager.instance.AddItem();
+        InventoryManager.instance.AddItem(item, amountGiven);
+
         Debug.Log("Game Data Changed!");
     }
 }

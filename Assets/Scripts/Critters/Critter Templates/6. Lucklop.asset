@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 6. Lucklop
+  m_EditorClassIdentifier: 
+  _name: Lucklop
+  _speciesName: Lucklop
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 0
+  type2: 5
+  _level: 1
+  _expPoints: 0
+  _growthRate: 1
+  _baseVitality: 12
+  _baseStamina: 10
+  _baseReason: 16
+  _baseStrength: 4
+  _baseToughness: 5
+  _baseAgility: 5
+  _basePower: 7
+  _baseLuck: 6
+  _baseEvasion: 6
+  limbs: 0100000003000000040000000500000009000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: 15050df6ce1efef4d80cc011a59ed878, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 3d6654be9df15d14eab7e875d95241ee, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: b2b8773f15b9a4b48ab18da12a54ccb0, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 7584ac8b63c0e09499a7a857a559a471, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: 15050df6ce1efef4d80cc011a59ed878, type: 2}
+  - {fileID: 11400000, guid: 3d6654be9df15d14eab7e875d95241ee, type: 2}
+  - {fileID: 11400000, guid: b2b8773f15b9a4b48ab18da12a54ccb0, type: 2}
+  - {fileID: 11400000, guid: 7584ac8b63c0e09499a7a857a559a471, type: 2}
+  learnedMoves: []

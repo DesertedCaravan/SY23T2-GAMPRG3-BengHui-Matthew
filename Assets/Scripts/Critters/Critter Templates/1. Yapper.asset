@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 1. Yapper
+  m_EditorClassIdentifier: 
+  _name: Yapper
+  _speciesName: Yapper
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 0
+  type2: 15
+  _level: 1
+  _expPoints: 0
+  _growthRate: 1
+  _baseVitality: 12
+  _baseStamina: 10
+  _baseReason: 8
+  _baseStrength: 5
+  _baseToughness: 4
+  _baseAgility: 4
+  _basePower: 3
+  _baseLuck: 4
+  _baseEvasion: 3
+  limbs: 040000000800000009000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: ebc9d32caa4ed774992237258e61c8cb, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 12fbe3a7e06664b4a813b5f76826b3d9, type: 2}
+  - level: 4
+    move: {fileID: 11400000, guid: ad4d854d98b07564eb41d62c419c3012, type: 2}
+  - level: 8
+    move: {fileID: 11400000, guid: 8a2890e4ffdd1354fb015ae17686e1bb, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: ebc9d32caa4ed774992237258e61c8cb, type: 2}
+  - {fileID: 11400000, guid: 12fbe3a7e06664b4a813b5f76826b3d9, type: 2}
+  learnedMoves: []

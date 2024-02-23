@@ -6,15 +6,15 @@ public class InteractableObject : CollidableObject
 {
     [Header("Dialogue Text")]
 
-    [SerializeField] private DialogueText interactDialogue;
-    [SerializeField] private DialogueText interactedDialogue;
+    [SerializeField] protected DialogueText interactDialogue;
+    [SerializeField] protected DialogueText interactedDialogue;
 
     // Old Version
     // public string[] interactTextBoxes;
     // public string[] interactedTextBoxes;
 
-    private bool _interacting = false;
-    private bool _interactedCheck = false;
+    protected bool _interacting = false;
+    protected bool _interactedCheck = false;
 
     protected override void OnCollided(GameObject collidedObject)
     {
@@ -71,6 +71,11 @@ public class InteractableObject : CollidableObject
         Debug.Log("INTERACT WITH " + name);
     }
 
+    public virtual void OnEndInteract() // Occurs only after the dialogue has concluded
+    {
+        Debug.Log("INTERACT WITH " + name);
+    }
+
     protected virtual void OnLaterInteract()
     {
         Debug.Log("ALREADY INTERACTED WITH " + name);
@@ -79,11 +84,6 @@ public class InteractableObject : CollidableObject
     public virtual void AllowInteraction()
     {
         _interacting = false;
-    }
-
-    public virtual void PlayerDataChange()
-    {
-        Debug.Log("CHANGED PLAYER DATA");
     }
 
     public virtual void ResetDialogue()

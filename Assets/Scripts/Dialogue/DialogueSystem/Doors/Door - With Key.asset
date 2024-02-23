@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68ed014541e7624ba834205abb6341c, type: 3}
+  m_Name: Door - With Key
+  m_EditorClassIdentifier: 
+  dialogue:
+  - The door is locked... There's a strange marking on it.
+  - Open the door?
+  responses:
+  - optionText: Yes
+    optionResult: {fileID: 11400000, guid: 75001b2193a347a4cb0aec576df84332, type: 2}
+  - optionText: No
+    optionResult: {fileID: 11400000, guid: ae7a1d5d1b96a6847864895564018fc6, type: 2}

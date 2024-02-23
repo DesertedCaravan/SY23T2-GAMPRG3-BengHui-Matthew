@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 3. Mewti
+  m_EditorClassIdentifier: 
+  _name: Mewti
+  _speciesName: Mewti
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 0
+  type2: 15
+  _level: 1
+  _expPoints: 0
+  _growthRate: 1
+  _baseVitality: 10
+  _baseStamina: 8
+  _baseReason: 10
+  _baseStrength: 4
+  _baseToughness: 3
+  _baseAgility: 5
+  _basePower: 4
+  _baseLuck: 4
+  _baseEvasion: 5
+  limbs: 040000000600000009000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: a2b0bcbe380178648aa79f5e67554a0d, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 5a1caf537b56c394ea101e7511979a41, type: 2}
+  - level: 4
+    move: {fileID: 11400000, guid: 18ba11a119bf6b041a2057093a79a8e6, type: 2}
+  - level: 8
+    move: {fileID: 11400000, guid: 4f72aee3e330d7f438a0262f8db05345, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: a2b0bcbe380178648aa79f5e67554a0d, type: 2}
+  - {fileID: 11400000, guid: 5a1caf537b56c394ea101e7511979a41, type: 2}
+  learnedMoves: []
