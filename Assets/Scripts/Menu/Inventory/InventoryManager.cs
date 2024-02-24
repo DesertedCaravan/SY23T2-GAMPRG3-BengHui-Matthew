@@ -32,6 +32,7 @@ public class InventoryManager : MonoBehaviour
     }
     */
 
+    /*
     // Convert to Singleton
     public static InventoryManager instance = null; // public static means that it can be accessed
 
@@ -46,6 +47,7 @@ public class InventoryManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
 
     public List<InventorySlots> SelectList(int listNumber)
     {

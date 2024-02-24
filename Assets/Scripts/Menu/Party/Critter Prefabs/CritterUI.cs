@@ -44,7 +44,7 @@ public class CritterUI : MonoBehaviour
 
         critterName.text = data.Name;
 
-        critterLevel.text = "L" + data.Level.ToString();
+        critterLevel.text = "LV" + data.Level.ToString();
         expTotal.text = "Exp Points: " + data.ExpPoints.ToString();
         expNext.text = "To Next LV: " + data.CalculateExpNeeded().ToString();
 

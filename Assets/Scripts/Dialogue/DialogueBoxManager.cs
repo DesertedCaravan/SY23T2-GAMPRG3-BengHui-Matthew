@@ -55,6 +55,7 @@ public class DialogueBoxManager : MonoBehaviour
     private bool wait;
     private bool menuTextActivated;
 
+    /*
     // Convert to Singleton
     public static DialogueBoxManager instance = null; // public static means that it can be accessed
 
@@ -69,6 +70,7 @@ public class DialogueBoxManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
 
     // Start is called before the first frame update
     void Start()

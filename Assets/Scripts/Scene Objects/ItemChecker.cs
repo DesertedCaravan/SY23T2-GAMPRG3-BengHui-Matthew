@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemChecker : InteractableObject
 {
+    [Header("Inventory Manager Updater")]
+    [SerializeField] private InventoryManager inventoryManager;
+
     [Header("With Dialogue Text")]
     [SerializeField] private DialogueText interactWithDialogue;
 
@@ -19,35 +22,42 @@ public class ItemChecker : InteractableObject
     [SerializeField] private ItemBase itemGiven;
     [SerializeField] private int amountGiven;
 
+    protected override void Start()
+    {
+        base.Start();
+
+        inventoryManager = FindObjectOfType<InventoryManager>(); // looks for the first one
+    }
+
     protected override void OnInteract()
     {
         if (!_interacting)
         {
             _interacting = true;
 
-            if (InventoryManager.instance.CheckForItem(itemNeeded) == true)
+            if (inventoryManager.CheckForItem(itemNeeded) == true)
             {
                 CheckResponseEvents(interactWithDialogue);
-                DialogueBoxManager.instance.StartDialogue(this, interactWithDialogue);
+                dialogueBoxManager.StartDialogue(this, interactWithDialogue);
             }
             else
             {
                 CheckResponseEvents(interactDialogue);
-                DialogueBoxManager.instance.StartDialogue(this, interactDialogue);
+                dialogueBoxManager.StartDialogue(this, interactDialogue);
             }
         }
     }
 
     public virtual void RemoveItem()
     {
-        InventoryManager.instance.RemoveItem(itemNeeded, amountNeeded);
+        inventoryManager.RemoveItem(itemNeeded, amountNeeded);
 
         Debug.Log("Game Data Changed!");
     }
 
     public virtual void GetItem()
     {
-        InventoryManager.instance.AddItem(itemGiven, amountGiven);
+        inventoryManager.AddItem(itemGiven, amountGiven);
 
         Debug.Log("Game Data Changed!");
     }

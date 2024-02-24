@@ -5,6 +5,12 @@ using TMPro;
 
 public class MenuUI : MonoBehaviour
 {
+    [Header("Menu Option Managers")]
+    [SerializeField] private PartyManager partyManager;
+    [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private SettingsManager settingsManager;
+
+    [Header("Menu UI Game Objects")]
     public bool _menuState;
 
     [SerializeField] private GameObject menuPanelToggle; // menu panel toggle
@@ -21,21 +27,6 @@ public class MenuUI : MonoBehaviour
 
     public bool OptionOpenState { set { _optionOpenState = value; } }
     public GameObject MenuOptionsPanelToggle => menuOptionsPanelToggle;
-
-    // Convert to Singleton
-    public static MenuUI instance = null; // public static means that it can be accessed
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -137,15 +128,15 @@ public class MenuUI : MonoBehaviour
 
         if (x == 0)
         {
-            PartyManager.instance.PartyUI.ResetToHandler();
+            partyManager.PartyUI.ResetToHandler();
         }
         else if (x == 1)
         {
-            InventoryManager.instance.InventoryUI.ResetChosenListItem();
+            inventoryManager.InventoryUI.ResetChosenListItem();
         }
         else if (x == 2)
         {
-            SettingsManager.instance.SettingsUI.ResetChosenOption();
+            settingsManager.SettingsUI.ResetChosenOption();
         }
     }
 }

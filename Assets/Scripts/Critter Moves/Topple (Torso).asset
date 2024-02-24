@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Small Hops
+  m_Name: Topple (Torso)
   m_EditorClassIdentifier: 
-  _name: Small Hops
-  _info: The user makes several small hops. High chance to increase user's evasion.
+  _name: Trip Up
+  _info: The user charges at the target in order to knock them off balance. Chance
+    to reduce the target's strength and toughness.
   type: 0
-  limb: 9
+  limb: 8
   damageCategory: 0
-  _staminaCost: 2
+  _staminaCost: 5
   _reasonCost: 0
-  target: 0
-  _damage: 0
-  _accuracy: 90
-  save: 6
+  target: 4
+  _damage: 45
+  _accuracy: 75
+  save: 1
   effects:
-  - {fileID: 11400000, guid: 2753c5d677b41574fa83196566f940ff, type: 2}
+  - {fileID: 11400000, guid: 3ba29399c3977454281419404e5dcdf3, type: 2}
+  - {fileID: 11400000, guid: f1b65a91288f07647a09f2d517a07ea2, type: 2}

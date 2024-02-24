@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Back Kick
+  m_Name: Scratch (Claw)
   m_EditorClassIdentifier: 
-  _name: Back Kick
-  _info: The user kicks the target with their hind legs. Chance to increase user's
-    accuracy.
+  _name: Scratch
+  _info: The user slashes the target with their sharp claws.
   type: 0
-  limb: 9
-  damageCategory: 0
-  _staminaCost: 3
+  limb: 6
+  _staminaCost: 2
   _reasonCost: 0
   target: 4
-  _damage: 35
-  _accuracy: 85
+  _damage: 30
+  _accuracy: 100
   save: 2
-  effects:
-  - {fileID: 11400000, guid: f01457a8be01be24aa34b87f0a7a9b45, type: 2}
+  effects: []

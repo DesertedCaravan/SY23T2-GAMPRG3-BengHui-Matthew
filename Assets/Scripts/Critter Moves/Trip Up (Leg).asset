@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Hiss
+  m_Name: Trip Up (Leg)
   m_EditorClassIdentifier: 
-  _name: Hiss
-  _info: The user makes a sharp noise as a warning sign. High chance to reduce target's
-    luck.
+  _name: Trip Up
+  _info: The user sweeps their leg in order to trip the target. Chance to reduce
+    the target's agility and evasion.
   type: 0
-  limb: 5
+  limb: 9
   damageCategory: 0
-  _staminaCost: 2
+  _staminaCost: 5
   _reasonCost: 0
   target: 4
-  _damage: 0
-  _accuracy: 90
-  save: 3
+  _damage: 45
+  _accuracy: 75
+  save: 2
   effects:
-  - {fileID: 11400000, guid: cc5170a3c5854b24fa04cd91b5f8a8c3, type: 2}
+  - {fileID: 11400000, guid: 9d911ae9646d7dc4ab4bddcb6df1e714, type: 2}
+  - {fileID: 11400000, guid: 2153c312e833ccc42b9f4c26738b3f45, type: 2}

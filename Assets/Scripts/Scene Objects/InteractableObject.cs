@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class InteractableObject : CollidableObject
 {
-    [Header("Dialogue Text")]
+    [Header("Dialogue Box Manager Updater")]
+    [SerializeField] protected DialogueBoxManager dialogueBoxManager;
 
+    [Header("Dialogue Text")]
     [SerializeField] protected DialogueText interactDialogue;
     [SerializeField] protected DialogueText interactedDialogue;
 
@@ -15,6 +17,13 @@ public class InteractableObject : CollidableObject
 
     protected bool _interacting = false;
     protected bool _interactedCheck = false;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        dialogueBoxManager = FindObjectOfType<DialogueBoxManager>(); // looks for the first one
+    }
 
     protected override void OnCollided(GameObject collidedObject)
     {
@@ -37,7 +46,7 @@ public class InteractableObject : CollidableObject
 
             CheckResponseEvents(interactDialogue);
 
-            DialogueBoxManager.instance.StartDialogue(this, interactDialogue);
+            dialogueBoxManager.StartDialogue(this, interactDialogue);
 
             OnFirstInteract();
         }
@@ -47,7 +56,7 @@ public class InteractableObject : CollidableObject
 
             CheckResponseEvents(interactedDialogue);
 
-            DialogueBoxManager.instance.StartDialogue(this, interactedDialogue);
+            dialogueBoxManager.StartDialogue(this, interactedDialogue);
 
             OnLaterInteract();
         }
@@ -60,7 +69,7 @@ public class InteractableObject : CollidableObject
         {
             if (dialogueEvents.DialogueText == dialogueText)
             {
-                DialogueBoxManager.instance.AddResponseEvents(dialogueEvents.Events);
+                dialogueBoxManager.AddResponseEvents(dialogueEvents.Events);
                 break;
             }
         }

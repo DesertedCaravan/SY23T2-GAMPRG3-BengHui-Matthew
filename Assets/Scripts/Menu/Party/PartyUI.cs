@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class PartyUI : OptionsUIBase
 {
+    [Header("Party Manager Updater")]
+    [SerializeField] private PartyManager partyManager;
+
     [Header("Party UI Game Objects")]
     [SerializeField] private GameObject partyPanel;
     [SerializeField] private List<GameObject> partyUIList;
@@ -50,7 +52,7 @@ public class PartyUI : OptionsUIBase
                     _optionSelected = true;
 
                     CheckResponseEvents(optionSelectDialogue);
-                    DialogueBoxManager.instance.StartMenuText(this, optionSelectDialogue);
+                    dialogueBoxManager.StartMenuText(this, optionSelectDialogue);
                 }
                 else if (Input.GetKeyDown(KeyCode.Q)) // quit party but only if summary is not yet active
                 {
@@ -128,7 +130,7 @@ public class PartyUI : OptionsUIBase
 
     private void UpdateHandler()
     {
-        partyUIList[0].GetComponent<CritterUI>().SetData(PartyManager.instance.Handler);
+        partyUIList[0].GetComponent<CritterUI>().SetData(partyManager.Handler);
     }
 
     public void UpdateCritterRoster()
@@ -140,7 +142,7 @@ public class PartyUI : OptionsUIBase
 
         for (int i = 0; i < 3; i++) // max of 3 slots (3 Critters)
         {
-            if (PartyManager.instance.PartyRoster[i] == null)
+            if (partyManager.PartyRoster[i] == null)
             {
                 if (partyPanel.activeSelf == true)
                 {
@@ -149,7 +151,7 @@ public class PartyUI : OptionsUIBase
             }
             else
             {
-                partyUIList[i + 1].GetComponent<CritterUI>().SetData(PartyManager.instance.PartyRoster[i]);
+                partyUIList[i + 1].GetComponent<CritterUI>().SetData(partyManager.PartyRoster[i]);
 
                 if (partyPanel.activeSelf == true)
                 {
@@ -163,11 +165,11 @@ public class PartyUI : OptionsUIBase
     {
         if (_selectedCritter == 0)
         {
-            summaryUI.SetCritterData(PartyManager.instance.Handler);
+            summaryUI.SetCritterData(partyManager.Handler);
         }
         else if (_selectedCritter >= 1 || _selectedCritter <= 3)
         {
-            summaryUI.SetCritterData(PartyManager.instance.PartyRoster[_selectedCritter - 1]);
+            summaryUI.SetCritterData(partyManager.PartyRoster[_selectedCritter - 1]);
         }
 
         UpdateSelectedMove();

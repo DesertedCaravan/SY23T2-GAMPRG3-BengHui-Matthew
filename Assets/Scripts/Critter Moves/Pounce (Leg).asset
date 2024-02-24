@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Tackle
+  m_Name: Pounce (Leg)
   m_EditorClassIdentifier: 
-  _name: Tackle
-  _info: The user slams their entire body onto the target.
+  _name: Pounce
+  _info: The user leaps into the air and pins down the target. Chance to reduce target's
+    evasion.
   type: 0
-  limb: 8
+  limb: 9
+  damageCategory: 0
   _staminaCost: 4
   _reasonCost: 0
   target: 4
-  _damage: 50
-  _accuracy: 90
-  save: 1
-  effects: []
+  _damage: 40
+  _accuracy: 80
+  save: 2
+  effects:
+  - {fileID: 11400000, guid: 2153c312e833ccc42b9f4c26738b3f45, type: 2}

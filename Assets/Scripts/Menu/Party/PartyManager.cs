@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PartyManager : MonoBehaviour
 {
-    [Header("Party Updater")]
+    [Header("Party UI Updater")]
     [SerializeField] private PartyUI partyUI;
 
     [Header("Party Roster")]
@@ -15,6 +15,7 @@ public class PartyManager : MonoBehaviour
     public CritterData Handler => handler;
     public List<CritterData> PartyRoster => partyRoster; // 0 - 2
 
+    /*
     // Convert to Singleton
     public static PartyManager instance = null; // public static means that it can be accessed
 
@@ -29,6 +30,7 @@ public class PartyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
 
     public void SetCritter(int rosterSlot, CritterData critter) // 0 - 2
     {

@@ -5,6 +5,9 @@ using TMPro;
 
 public class SettingsUI : OptionsUIBase
 {
+    [Header("Settings Manager Updater")]
+    [SerializeField] private SettingsManager settingsManager;
+
     [Header("Settings UI Game Objects")]
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private List<TextMeshProUGUI> settingsUIList;

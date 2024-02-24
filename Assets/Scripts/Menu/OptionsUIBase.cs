@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class OptionsUIBase : MonoBehaviour
 {
+    [Header("Dialogue Box Manager Updater")]
+    [SerializeField] protected DialogueBoxManager dialogueBoxManager;
+
     [Header("Base Menu Option UI")]
     [SerializeField] protected MenuUI menuUI;
 
@@ -31,7 +34,7 @@ public class OptionsUIBase : MonoBehaviour
         {
             if (dialogueEvents.DialogueText == dialogueText)
             {
-                DialogueBoxManager.instance.AddResponseEvents(dialogueEvents.Events);
+                dialogueBoxManager.AddResponseEvents(dialogueEvents.Events);
                 break;
             }
         }

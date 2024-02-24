@@ -23,9 +23,9 @@ MonoBehaviour:
   _baseVitality: 16
   _baseStamina: 14
   _baseReason: 10
-  _baseStrength: 7
+  _baseStrength: 8
   _baseToughness: 6
-  _baseAgility: 5
+  _baseAgility: 6
   _basePower: 4
   _baseLuck: 5
   _baseEvasion: 5
@@ -35,13 +35,11 @@ MonoBehaviour:
     move: {fileID: 11400000, guid: ebc9d32caa4ed774992237258e61c8cb, type: 2}
   - level: 1
     move: {fileID: 11400000, guid: 12fbe3a7e06664b4a813b5f76826b3d9, type: 2}
-  - level: 1
-    move: {fileID: 11400000, guid: ad4d854d98b07564eb41d62c419c3012, type: 2}
-  - level: 1
+  - level: 3
     move: {fileID: 11400000, guid: 8a2890e4ffdd1354fb015ae17686e1bb, type: 2}
+  - level: 6
+    move: {fileID: 11400000, guid: ad4d854d98b07564eb41d62c419c3012, type: 2}
   setMoves:
   - {fileID: 11400000, guid: ebc9d32caa4ed774992237258e61c8cb, type: 2}
   - {fileID: 11400000, guid: 12fbe3a7e06664b4a813b5f76826b3d9, type: 2}
-  - {fileID: 11400000, guid: ad4d854d98b07564eb41d62c419c3012, type: 2}
-  - {fileID: 11400000, guid: 8a2890e4ffdd1354fb015ae17686e1bb, type: 2}
   learnedMoves: []

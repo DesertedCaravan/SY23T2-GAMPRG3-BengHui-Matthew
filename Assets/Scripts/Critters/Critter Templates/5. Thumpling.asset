@@ -35,9 +35,9 @@ MonoBehaviour:
     move: {fileID: 11400000, guid: 15050df6ce1efef4d80cc011a59ed878, type: 2}
   - level: 1
     move: {fileID: 11400000, guid: 3d6654be9df15d14eab7e875d95241ee, type: 2}
-  - level: 4
+  - level: 3
     move: {fileID: 11400000, guid: b2b8773f15b9a4b48ab18da12a54ccb0, type: 2}
-  - level: 8
+  - level: 6
     move: {fileID: 11400000, guid: 7584ac8b63c0e09499a7a857a559a471, type: 2}
   setMoves:
   - {fileID: 11400000, guid: 15050df6ce1efef4d80cc011a59ed878, type: 2}

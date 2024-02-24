@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemGiver : InteractableObject
 {
+    [Header("Inventory Manager Updater")]
+    [SerializeField] private InventoryManager inventoryManager;
+
     [Header("Sprite Changer")]
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     [SerializeField] private Sprite usedSprite;
@@ -14,6 +17,13 @@ public class ItemGiver : InteractableObject
 
     [Header("First Interaction")]
     [SerializeField] private bool firstInteractDataChange;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        inventoryManager = FindObjectOfType<InventoryManager>(); // looks for the first one
+    }
 
     protected override void OnFirstInteract()
     {
@@ -29,7 +39,7 @@ public class ItemGiver : InteractableObject
     {
         m_SpriteRenderer.sprite = usedSprite;
 
-        InventoryManager.instance.AddItem(item, amountGiven);
+        inventoryManager.AddItem(item, amountGiven);
 
         Debug.Log("Game Data Changed!");
     }

@@ -143,7 +143,7 @@ public class SummaryUI : MonoBehaviour
         critterType1.text = SetType(data.Type1);
         critterType2.text = SetType(data.Type2);
 
-        critterLevel.text = "L" + data.Level.ToString();
+        critterLevel.text = "LV" + data.Level.ToString();
         expTotal.text = "Exp Points: " + data.ExpPoints.ToString();
         expNext.text = "To Next LV: " + data.CalculateExpNeeded().ToString();
 

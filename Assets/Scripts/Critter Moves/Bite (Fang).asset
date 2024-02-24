@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Nibble
+  m_Name: Bite (Fang)
   m_EditorClassIdentifier: 
-  _name: Nibble
-  _info: The user nips at the target's flesh with their front teeth.
+  _name: Bite
+  _info: The user sinks their fangs into the target's flesh.
   type: 0
   limb: 4
-  _staminaCost: 1
+  _staminaCost: 3
   _reasonCost: 0
   target: 4
-  _damage: 25
+  _damage: 40
   _accuracy: 100
   save: 1
   effects: []

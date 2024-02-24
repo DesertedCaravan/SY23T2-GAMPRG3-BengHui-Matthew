@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Bark
+  m_Name: Back Kick (Leg)
   m_EditorClassIdentifier: 
-  _name: Bark
-  _info: The user makes a loud noise as a show of force. High chance to reduce target's
-    strength.
+  _name: Back Kick
+  _info: The user kicks the target with their hind legs. Chance to increase user's
+    accuracy.
   type: 0
-  limb: 5
+  limb: 9
   damageCategory: 0
-  _staminaCost: 2
+  _staminaCost: 3
   _reasonCost: 0
   target: 4
-  _damage: 0
-  _accuracy: 90
-  save: 3
+  _damage: 35
+  _accuracy: 85
+  save: 2
   effects:
-  - {fileID: 11400000, guid: a5d1114401f6d124c805406bb3db6a9f, type: 2}
+  - {fileID: 11400000, guid: f01457a8be01be24aa34b87f0a7a9b45, type: 2}

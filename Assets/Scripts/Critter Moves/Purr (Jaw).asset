@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Bite
+  m_Name: Purr (Jaw)
   m_EditorClassIdentifier: 
-  _name: Bite
-  _info: The user sinks their fangs into the target's flesh.
+  _name: Purr
+  _info: The user makes a soothing sound to lull the target. High chance to reduce
+    the target's toughness.
   type: 0
-  limb: 4
-  _staminaCost: 3
+  limb: 5
+  damageCategory: 0
+  _staminaCost: 2
   _reasonCost: 0
   target: 4
-  _damage: 40
-  _accuracy: 100
-  save: 1
-  effects: []
+  _damage: 0
+  _accuracy: 90
+  save: 3
+  effects:
+  - {fileID: 11400000, guid: a5d1114401f6d124c805406bb3db6a9f, type: 2}

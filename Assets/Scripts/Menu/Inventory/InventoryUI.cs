@@ -6,6 +6,9 @@ using TMPro;
 
 public class InventoryUI : OptionsUIBase
 {
+    [Header("Inventory Manager Updater")]
+    [SerializeField] private InventoryManager inventoryManager;
+
     [Header("Inventory UI Game Objects")]
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject pouchContent;
@@ -109,7 +112,7 @@ public class InventoryUI : OptionsUIBase
             --_selectedItem;
         }
 
-        _selectedItem = Mathf.Clamp(_selectedItem, 0, InventoryManager.instance.SelectList(_selectedList).Count - 1);
+        _selectedItem = Mathf.Clamp(_selectedItem, 0, inventoryManager.SelectList(_selectedList).Count - 1);
 
         if (prevSelection != _selectedItem)
         {
@@ -142,7 +145,7 @@ public class InventoryUI : OptionsUIBase
 
         chosenItemList = new List<ItemUI>(); // Make new temporary list // Alternative is itemList.Clear();
 
-        foreach (var slot in InventoryManager.instance.SelectList(_selectedList)) // previously inventory.Slots
+        foreach (var slot in inventoryManager.SelectList(_selectedList)) // previously inventory.Slots
         {
             var itemDisplay = Instantiate(item, pouchContent.transform); // Instantiate Item Prefab
             itemDisplay.SetData(slot); // Call SetData function from Instantiated Item Prefab
@@ -167,9 +170,9 @@ public class InventoryUI : OptionsUIBase
             }
         }
 
-        if (InventoryManager.instance.SelectList(_selectedList).Count > 0) // Check if Chosen List has items
+        if (inventoryManager.SelectList(_selectedList).Count > 0) // Check if Chosen List has items
         {
-            var item = InventoryManager.instance.SelectList(_selectedList)[_selectedItem].GetItem;
+            var item = inventoryManager.SelectList(_selectedList)[_selectedItem].GetItem;
             itemIcon.sprite = item.Icon;
             itemDescription.text = item.Description;
         }

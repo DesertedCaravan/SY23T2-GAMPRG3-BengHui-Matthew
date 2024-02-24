@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
-  m_Name: Scratch
+  m_Name: Bark (Jaw)
   m_EditorClassIdentifier: 
-  _name: Scratch
-  _info: The user slashes the target with their sharp claws.
+  _name: Bark
+  _info: The user makes a loud noise as a show of force. High chance to reduce target's
+    strength.
   type: 0
-  limb: 6
+  limb: 5
+  damageCategory: 0
   _staminaCost: 2
   _reasonCost: 0
   target: 4
-  _damage: 30
-  _accuracy: 100
-  save: 2
-  effects: []
+  _damage: 0
+  _accuracy: 90
+  save: 3
+  effects:
+  - {fileID: 11400000, guid: a5d1114401f6d124c805406bb3db6a9f, type: 2}
