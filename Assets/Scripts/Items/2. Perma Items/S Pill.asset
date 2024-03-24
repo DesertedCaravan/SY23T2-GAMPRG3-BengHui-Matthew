@@ -17,5 +17,11 @@ MonoBehaviour:
   descriptionText: A strange red pill. It feels warm to the touch. Permanently increases
     the Strength of one ally by 1.
   icon: {fileID: -1602659113, guid: c955a69b9207f91439596df453e00231, type: 3}
-  battleStat: 0
-  statGain: 1
+  permaType: 0
+  permaStat: 3
+  _statGain: 1
+  _permaLevel: 0
+  _permaExp: 0
+  _permaEvolve: 0
+  tabletLimb: 0
+  tomeMove: {fileID: 0}

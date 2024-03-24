@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 21. Nitecrowler
+  m_EditorClassIdentifier: 
+  _name: Nitecrowler
+  _speciesName: Nitecrowler
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 4
+  type2: 0
+  _level: 1
+  _expPoints: 0
+  _growthRate: 0
+  _baseVitality: 14
+  _baseStamina: 12
+  _baseReason: 16
+  _baseStrength: 7
+  _baseToughness: 5
+  _baseAgility: 8
+  _basePower: 7
+  _baseLuck: 7
+  _baseEvasion: 9
+  limbs: 00000000010000000500000006000000070000000a000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: a2b0bcbe380178648aa79f5e67554a0d, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 507f772ba53b49d4195dd580bc2ac17b, type: 2}
+  - level: 3
+    move: {fileID: 11400000, guid: 2e8755dba32158a43a81699e3a65ebae, type: 2}
+  - level: 6
+    move: {fileID: 11400000, guid: c1fdc99c5ab22194ba6f0ed590e7c6ba, type: 2}
+  - level: 8
+    move: {fileID: 11400000, guid: 17c2073840d8e954f9017147eb464ca3, type: 2}
+  - level: 9
+    move: {fileID: 11400000, guid: e6fac978574da47469501a5a35668f45, type: 2}
+  - level: 10
+    move: {fileID: 11400000, guid: 1d26c5fc871a38a48add475ed2097d21, type: 2}
+  - level: 12
+    move: {fileID: 11400000, guid: 1d2c30a048b466f4f8d052e53752aaf8, type: 2}
+  - level: 15
+    move: {fileID: 11400000, guid: c470b0a6b2fe18a4bb8c66ec28660ffc, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: a2b0bcbe380178648aa79f5e67554a0d, type: 2}
+  - {fileID: 11400000, guid: 507f772ba53b49d4195dd580bc2ac17b, type: 2}
+  learnedMoves: []

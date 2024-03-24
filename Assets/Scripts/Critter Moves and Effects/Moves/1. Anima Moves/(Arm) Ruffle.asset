@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Arm) Ruffle
+  m_EditorClassIdentifier: 
+  _name: Ruffle
+  _info: The user moves their arms in weird and confusing movements. Chance to reduce
+    the target's power and luck.
+  type: 0
+  limb: 7
+  damageCategory: 0
+  _staminaCost: 4
+  _reasonCost: 0
+  target: 4
+  _damage: 0
+  _accuracy: 75
+  save: 3
+  effects:
+  - {fileID: 11400000, guid: d9781c9ae1abafd4ea2e0b9735319169, type: 2}
+  - {fileID: 11400000, guid: a86857787af08a1438ffc05975aec729, type: 2}

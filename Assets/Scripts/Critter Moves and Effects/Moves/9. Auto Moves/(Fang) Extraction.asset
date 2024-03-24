@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Fang) Extraction
+  m_EditorClassIdentifier: 
+  _name: Extraction
+  _info: The user saps the target's bioelectricity, reducing their mental capacity.
+    Reduces the target's Reason by 20% and restores 10% Reason.
+  damageCategory: 0
+  type: 8
+  limb: 4
+  _staminaCost: 3
+  _reasonCost: 4
+  target: 4
+  _damage: 20
+  _accuracy: 100
+  save: 1
+  effects:
+  - {fileID: 11400000, guid: 57060a85ffa0c5a4e8475bf9acd435da, type: 2}
+  - {fileID: 11400000, guid: 10410fac4663f4641a53dadb42671bf3, type: 2}

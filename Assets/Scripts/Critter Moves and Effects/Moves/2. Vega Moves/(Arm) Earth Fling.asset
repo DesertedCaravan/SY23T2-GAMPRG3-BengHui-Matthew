@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Arm) Earth Fling
+  m_EditorClassIdentifier: 
+  _name: Earth Fling
+  _info: The user throws a clump of rocks and dirt at the target. Chance to reduce
+    the target's accuracy.
+  damageCategory: 0
+  type: 1
+  limb: 7
+  _staminaCost: 3
+  _reasonCost: 0
+  target: 4
+  _damage: 20
+  _accuracy: 85
+  save: 2
+  effects:
+  - {fileID: 11400000, guid: 0f8c8c58308c8c441957c4b7289c0238, type: 2}

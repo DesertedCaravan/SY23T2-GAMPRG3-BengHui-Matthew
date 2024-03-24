@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 7. Aarvel
+  m_EditorClassIdentifier: 
+  _name: Aarvel
+  _speciesName: Aarvel
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 1
+  type2: 15
+  _level: 1
+  _expPoints: 0
+  _growthRate: 2
+  _baseVitality: 6
+  _baseStamina: 6
+  _baseReason: 8
+  _baseStrength: 2
+  _baseToughness: 2
+  _baseAgility: 3
+  _basePower: 4
+  _baseLuck: 4
+  _baseEvasion: 3
+  limbs: 0a000000020000000300000004000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: 97b8af8519d8ce9428a1063bc19027ad, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 63b679831fd6af146921aa17ac2122c5, type: 2}
+  - level: 2
+    move: {fileID: 11400000, guid: 1fa4cba688b90e54ca68952ddffe4c37, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: 97b8af8519d8ce9428a1063bc19027ad, type: 2}
+  - {fileID: 11400000, guid: 63b679831fd6af146921aa17ac2122c5, type: 2}
+  learnedMoves: []

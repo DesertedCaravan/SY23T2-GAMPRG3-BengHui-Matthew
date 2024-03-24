@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Oculus) Sharp Eye
+  m_EditorClassIdentifier: 
+  _name: Sharp Eye
+  _info: The user hones their attention on the target's weak points. Raises the user's
+    accuracy.
+  damageCategory: 0
+  type: 0
+  limb: 1
+  _staminaCost: 2
+  _reasonCost: 1
+  target: 0
+  _damage: 0
+  _accuracy: 90
+  save: 6
+  effects:
+  - {fileID: 11400000, guid: 572900b622877904f9ad824eb51b773f, type: 2}

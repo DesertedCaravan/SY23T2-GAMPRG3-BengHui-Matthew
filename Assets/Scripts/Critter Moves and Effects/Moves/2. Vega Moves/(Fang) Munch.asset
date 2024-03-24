@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Fang) Munch
+  m_EditorClassIdentifier: 
+  _name: Munch
+  _info: The user takes several bites of the target's flesh, converting it into health.
+    Chance to restore 10% Vitality.
+  damageCategory: 0
+  type: 1
+  limb: 4
+  _staminaCost: 1
+  _reasonCost: 0
+  target: 4
+  _damage: 15
+  _accuracy: 100
+  save: 1
+  effects:
+  - {fileID: 11400000, guid: 9629b2e7a7b058e489d580616834aa46, type: 2}

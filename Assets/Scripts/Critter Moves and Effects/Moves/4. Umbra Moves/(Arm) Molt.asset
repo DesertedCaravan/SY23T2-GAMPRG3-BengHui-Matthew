@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Arm) Molt
+  m_EditorClassIdentifier: 
+  _name: Molt
+  _info: The user scatters its old feathers and replaces them with stronger ones.
+    Raises the user's evasion and a chance to raise toughness.
+  damageCategory: 0
+  type: 3
+  limb: 7
+  _staminaCost: 3
+  _reasonCost: 0
+  target: 0
+  _damage: 0
+  _accuracy: 90
+  save: 6
+  effects:
+  - {fileID: 11400000, guid: 2753c5d677b41574fa83196566f940ff, type: 2}
+  - {fileID: 11400000, guid: a1f016eccb197454cb01655db27622ec, type: 2}

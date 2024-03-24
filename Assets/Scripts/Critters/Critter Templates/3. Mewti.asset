@@ -29,13 +29,17 @@ MonoBehaviour:
   _basePower: 4
   _baseLuck: 4
   _baseEvasion: 5
-  limbs: 040000000600000009000000
+  limbs: 04000000060000000500000009000000
   levelMoves:
   - level: 1
     move: {fileID: 11400000, guid: a2b0bcbe380178648aa79f5e67554a0d, type: 2}
   - level: 1
     move: {fileID: 11400000, guid: 5a1caf537b56c394ea101e7511979a41, type: 2}
-  - level: 3
+  - level: 2
+    move: {fileID: 11400000, guid: 18ba11a119bf6b041a2057093a79a8e6, type: 2}
+  - level: 4
+    move: {fileID: 11400000, guid: c1fdc99c5ab22194ba6f0ed590e7c6ba, type: 2}
+  - level: 6
     move: {fileID: 11400000, guid: 4f72aee3e330d7f438a0262f8db05345, type: 2}
   setMoves:
   - {fileID: 11400000, guid: a2b0bcbe380178648aa79f5e67554a0d, type: 2}

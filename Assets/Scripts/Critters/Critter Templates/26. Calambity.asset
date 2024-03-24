@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 26. Calambity
+  m_EditorClassIdentifier: 
+  _name: Calambity
+  _speciesName: Calambity
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 2
+  type2: 15
+  _level: 1
+  _expPoints: 0
+  _growthRate: 0
+  _baseVitality: 13
+  _baseStamina: 13
+  _baseReason: 13
+  _baseStrength: 6
+  _baseToughness: 6
+  _baseAgility: 6
+  _basePower: 10
+  _baseLuck: 10
+  _baseEvasion: 10
+  limbs: 010000000200000003000000040000000500000008000000090000000a000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: 775990a71cf7f7140b5c0f08cf4c52aa, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: b093f993993ea4043a31da1c3fcdbd1d, type: 2}
+  - level: 3
+    move: {fileID: 11400000, guid: eaf2798177fb45440916a054d254a1f9, type: 2}
+  - level: 5
+    move: {fileID: 11400000, guid: 918c0c6a10a2d5b4182d51e1b256bba7, type: 2}
+  - level: 7
+    move: {fileID: 11400000, guid: 8601a5561a6edda45b044a789cd008b6, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: 775990a71cf7f7140b5c0f08cf4c52aa, type: 2}
+  - {fileID: 11400000, guid: b093f993993ea4043a31da1c3fcdbd1d, type: 2}
+  learnedMoves: []

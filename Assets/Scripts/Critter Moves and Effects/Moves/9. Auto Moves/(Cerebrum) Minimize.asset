@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Cerebrum) Minimize
+  m_EditorClassIdentifier: 
+  _name: Minimize
+  _info: The user reduces its thinking capacity in order to boost its locomotion.
+    Restores 50% Stamina.
+  damageCategory: 0
+  type: 8
+  limb: 0
+  _staminaCost: 0
+  _reasonCost: 6
+  target: 0
+  _damage: 0
+  _accuracy: 100
+  save: 6
+  effects:
+  - {fileID: 11400000, guid: 29f5b8468cc8a3c41baa9cf723323abd, type: 2}

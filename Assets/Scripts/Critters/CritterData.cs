@@ -65,11 +65,12 @@ public class CritterData : ScriptableObject
     [SerializeField] private GrowthRate _growthRate;
     private int _growthValue;
 
-    [Header("Base Stats")]
+    [Header("Base Health Stats")]
     [SerializeField] private int _baseVitality;
     [SerializeField] private int _baseStamina;
     [SerializeField] private int _baseReason;
 
+    [Header("Base Battle Stats")]
     [SerializeField] private int _baseStrength;
     [SerializeField] private int _baseToughness;
     [SerializeField] private int _baseAgility;
@@ -129,8 +130,8 @@ public class CritterData : ScriptableObject
     public int Evasion => _evasion;
 
     public List<int> LimbValues => limbValues;
-    public List<LevelMoves> LevelMoves => levelMoves; // don't need to consider limbs
-    public List<MoveData> SetMoves => setMoves; // don't need to consider limbs
+    public List<LevelMoves> LevelMoves => levelMoves; // must consider limbs
+    public List<MoveData> SetMoves => setMoves; // must consider limbs
     public List<MoveData> LearnedMoves => learnedMoves; // must consider limbs
 
     public void OnValidate()
@@ -144,6 +145,29 @@ public class CritterData : ScriptableObject
         {
             limbValues.Add((int)limbs[i]);
         }
+
+        // Buggy when used
+        /*
+        foreach (LevelMoves levelmoves in LevelMoves)
+        {
+            MoveData moveCheck = levelmoves.GetMove;
+
+            bool limbChecker = false;
+
+            foreach (Limb limb in limbs)
+            {
+                if (moveCheck.Limb == (int)limb)
+                {
+                    limbChecker = true;
+                }
+            }
+
+            if (limbChecker == false)
+            {
+                LevelMoves.Remove(levelmoves);
+            }
+        }
+        */
 
         foreach (MoveData move in LearnedMoves)
         {

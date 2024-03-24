@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Oculus) Eye Scream
+  m_EditorClassIdentifier: 
+  _name: Eye Scream
+  _info: The user plagues their target's mind with terrible thoughts. Chance to reduce
+    the target's reason by 30%.
+  damageCategory: 1
+  type: 11
+  limb: 1
+  _staminaCost: 0
+  _reasonCost: 6
+  target: 4
+  _damage: 30
+  _accuracy: 100
+  save: 3
+  effects:
+  - {fileID: 11400000, guid: 690c75806690a1c40b88ed836d4c8d62, type: 2}

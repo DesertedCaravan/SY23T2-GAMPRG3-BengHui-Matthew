@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
+  m_Name: 10. Rhytmph
+  m_EditorClassIdentifier: 
+  _name: Rhytmph
+  _speciesName: Rhytmph
+  _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
+  type1: 1
+  type2: 15
+  _level: 1
+  _expPoints: 0
+  _growthRate: 2
+  _baseVitality: 6
+  _baseStamina: 8
+  _baseReason: 6
+  _baseStrength: 2
+  _baseToughness: 2
+  _baseAgility: 4
+  _basePower: 2
+  _baseLuck: 4
+  _baseEvasion: 5
+  limbs: 05000000060000000700000009000000
+  levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: 54adcbe7e8533ee4e9df8ddb2e8bba1a, type: 2}
+  - level: 1
+    move: {fileID: 11400000, guid: 0a918b7379304ab448d46b6b59fd801e, type: 2}
+  - level: 2
+    move: {fileID: 11400000, guid: 4627ebcc37dddd74db93ceaccb21be48, type: 2}
+  setMoves:
+  - {fileID: 11400000, guid: 54adcbe7e8533ee4e9df8ddb2e8bba1a, type: 2}
+  - {fileID: 11400000, guid: 0a918b7379304ab448d46b6b59fd801e, type: 2}
+  learnedMoves: []

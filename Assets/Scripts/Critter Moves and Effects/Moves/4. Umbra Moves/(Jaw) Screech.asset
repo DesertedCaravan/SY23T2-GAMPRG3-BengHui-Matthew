@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Jaw) Screech
+  m_EditorClassIdentifier: 
+  _name: Screech
+  _info: The user makes a harsh cry that disrupts focus. Reduces all target's power
+    for a while.
+  damageCategory: 1
+  type: 3
+  limb: 5
+  _staminaCost: 1
+  _reasonCost: 4
+  target: 5
+  _damage: 0
+  _accuracy: 80
+  save: 3
+  effects:
+  - {fileID: 11400000, guid: 8f1e4e7a257f0d84ab67bc030ee2bf84, type: 2}

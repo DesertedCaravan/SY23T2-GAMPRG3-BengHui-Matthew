@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Horn) Gore
+  m_EditorClassIdentifier: 
+  _name: Gore
+  _info: The user rushes forward and attempts to impale the target on its horns or
+    tusks. Chance to inflict bleeding for a while.
+  damageCategory: 0
+  type: 0
+  limb: 3
+  _staminaCost: 6
+  _reasonCost: 0
+  target: 4
+  _damage: 65
+  _accuracy: 70
+  save: 2
+  effects:
+  - {fileID: 11400000, guid: fa55bbff7c341574588e7489584a7aa9, type: 2}

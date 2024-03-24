@@ -15,8 +15,8 @@ MonoBehaviour:
   _name: Lucklop
   _speciesName: Lucklop
   _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
-  type1: 0
-  type2: 5
+  type1: 5
+  type2: 0
   _level: 1
   _expPoints: 0
   _growthRate: 1
@@ -29,16 +29,24 @@ MonoBehaviour:
   _basePower: 8
   _baseLuck: 6
   _baseEvasion: 6
-  limbs: 01000000030000000400000005000000090000000a000000
+  limbs: 010000000300000004000000080000000700000009000000
   levelMoves:
   - level: 1
     move: {fileID: 11400000, guid: 15050df6ce1efef4d80cc011a59ed878, type: 2}
   - level: 1
     move: {fileID: 11400000, guid: 3d6654be9df15d14eab7e875d95241ee, type: 2}
-  - level: 3
+  - level: 2
     move: {fileID: 11400000, guid: b2b8773f15b9a4b48ab18da12a54ccb0, type: 2}
-  - level: 6
+  - level: 4
     move: {fileID: 11400000, guid: 7584ac8b63c0e09499a7a857a559a471, type: 2}
+  - level: 6
+    move: {fileID: 11400000, guid: 47bbf35bbe17c5849b85e4b70d4869b3, type: 2}
+  - level: 8
+    move: {fileID: 11400000, guid: 6d032fbfd014b944eb72d9e8b345b275, type: 2}
+  - level: 10
+    move: {fileID: 11400000, guid: f79455c5f0f632246b54e6e47d4b58db, type: 2}
+  - level: 12
+    move: {fileID: 11400000, guid: 38eea9430eb5c704495e5c330e1cec84, type: 2}
   setMoves:
   - {fileID: 11400000, guid: 15050df6ce1efef4d80cc011a59ed878, type: 2}
   - {fileID: 11400000, guid: 3d6654be9df15d14eab7e875d95241ee, type: 2}

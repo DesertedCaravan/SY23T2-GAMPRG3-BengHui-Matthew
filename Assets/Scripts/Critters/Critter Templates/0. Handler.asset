@@ -30,6 +30,12 @@ MonoBehaviour:
   _baseLuck: 4
   _baseEvasion: 3
   limbs: 070000000800000009000000
-  levelMoves: []
+  levelMoves:
+  - level: 4
+    move: {fileID: 11400000, guid: cc0ea2cb49954f3439abdb560c2f9830, type: 2}
+  - level: 8
+    move: {fileID: 11400000, guid: 507f772ba53b49d4195dd580bc2ac17b, type: 2}
+  - level: 12
+    move: {fileID: 11400000, guid: 10899d4194142cc469f7fb7c4fbea1ae, type: 2}
   setMoves: []
   learnedMoves: []

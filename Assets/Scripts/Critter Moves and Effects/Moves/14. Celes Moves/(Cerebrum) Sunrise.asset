@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Cerebrum) Sunrise
+  m_EditorClassIdentifier: 
+  _name: Sunrise
+  _info: The user emits a warm refreshing light which shines upon their allies. Restores
+    all allies' Stamina by 30%.
+  damageCategory: 1
+  type: 13
+  limb: 0
+  _staminaCost: 2
+  _reasonCost: 6
+  target: 2
+  _damage: 0
+  _accuracy: 80
+  save: 6
+  effects:
+  - {fileID: 11400000, guid: 5f10d09fe748da343bebce1ed1149bf7, type: 2}

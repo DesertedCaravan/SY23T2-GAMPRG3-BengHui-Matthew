@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf2c8760e1880a48a02abf817272e07, type: 3}
+  m_Name: (V80) Ham
+  m_EditorClassIdentifier: 
+  itemType: 0
+  nameText: Ham
+  descriptionText: A slice of ham. Is this also made of pork? Restores 80 Vitality
+    when eaten.
+  icon: {fileID: -1602659113, guid: c955a69b9207f91439596df453e00231, type: 3}
+  allyTarget: 0
+  vitalityGain: 80
+  maxVitality: 0
+  staminaGain: 0
+  maxStamina: 0
+  reasonGain: 0
+  maxReason: 0
+  halfRev: 0
+  maxRev: 0

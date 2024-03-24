@@ -18,10 +18,10 @@ public class BuffItemBase : ItemBase
     public enum Target
     {
         OneAlly,
-        AllAllyCritters,
+        AllyRow,
         PHandler,
         OneEnemy,
-        AllEnemyCritters,
+        EnemyRow,
         EHandler,
         All
     }

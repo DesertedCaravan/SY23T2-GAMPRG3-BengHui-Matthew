@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1c95f9f45b4b469e7a85854ce18f3, type: 3}
+  m_Name: (Torso) Savage Might
+  m_EditorClassIdentifier: 
+  _name: Savage Might
+  _info: The user enhances their own body with primal magic. Raises the target's
+    strength, toughness and agility for a while.
+  damageCategory: 1
+  type: 9
+  limb: 8
+  _staminaCost: 5
+  _reasonCost: 3
+  target: 0
+  _damage: 0
+  _accuracy: 90
+  save: 6
+  effects:
+  - {fileID: 11400000, guid: 975b4b65f41647348936f17571d53d82, type: 2}
+  - {fileID: 11400000, guid: f0ad3702b8c817745ac7d69c55bb5ba9, type: 2}
+  - {fileID: 11400000, guid: 4482b00fb794c034ebc669ac9a8a2947, type: 2}

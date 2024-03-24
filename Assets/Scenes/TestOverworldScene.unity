@@ -628,7 +628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &111556211
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2253,6 +2253,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371122529}
   m_CullTransparentMesh: 1
+--- !u!1 &383885850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383885851}
+  - component: {fileID: 383885852}
+  m_Layer: 0
+  m_Name: EncounterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &383885851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383885850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.494483, y: -1.1937894, z: -0.050879754}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383885852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383885850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbda63718dcdf145af43aed5fc8ea3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &391759662
 GameObject:
   m_ObjectHideFlags: 0
@@ -4583,7 +4627,7 @@ GameObject:
   - component: {fileID: 750159667}
   - component: {fileID: 750159666}
   m_Layer: 5
-  m_Name: Items (Equip) (TMP)
+  m_Name: Items (Equipment) (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8147,7 +8191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193567839}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13210,11 +13254,9 @@ GameObject:
   - component: {fileID: 1390116521}
   - component: {fileID: 1390116525}
   - component: {fileID: 1390116524}
-  - component: {fileID: 1390116523}
   - component: {fileID: 1390116526}
-  - component: {fileID: 1390116522}
   m_Layer: 0
-  m_Name: Battle Tile
+  m_Name: Encounter Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13235,89 +13277,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1445617648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1390116522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390116520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e61802912e61614484f0b250ae94411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueText: {fileID: 11400000, guid: 3a924d516df287c4696ae3a5facff362, type: 2}
-  events:
-  - name: Yes
-    onPickedResponse:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1390116523}
-          m_TargetAssemblyTypeName: ItemChecker, Assembly-CSharp
-          m_MethodName: RemoveItem
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1390116520}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: No
-    onPickedResponse:
-      m_PersistentCalls:
-        m_Calls: []
---- !u!114 &1390116523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390116520}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c7eb410d6ef1e41a96145717fd203a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 256
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  dialogueBoxManager: {fileID: 0}
-  interactDialogue: {fileID: 11400000, guid: a875eb8fcc8019046ae21eac8752b11f, type: 2}
-  interactedDialogue: {fileID: 11400000, guid: a875eb8fcc8019046ae21eac8752b11f, type: 2}
-  inventoryManager: {fileID: 0}
-  interactWithDialogue: {fileID: 11400000, guid: 3a924d516df287c4696ae3a5facff362, type: 2}
-  m_SpriteRenderer: {fileID: 1390116525}
-  usedSprite: {fileID: 1321594856, guid: c955a69b9207f91439596df453e00231, type: 3}
-  itemNeeded: {fileID: 11400000, guid: 02a6ae5ebbf420d49977fa6703f6af90, type: 2}
-  amountNeeded: 1
-  itemGiven: {fileID: 0}
-  amountGiven: 0
 --- !u!61 &1390116524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13442,11 +13401,21 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   dialogueBoxManager: {fileID: 2041704287}
-  interactDialogue: {fileID: 0}
-  interactedDialogue: {fileID: 0}
+  interactDialogue: {fileID: 11400000, guid: 3e09ddac4e4e2ee498cdd68cd399f98d, type: 2}
+  interactedDialogue: {fileID: 11400000, guid: 3e09ddac4e4e2ee498cdd68cd399f98d, type: 2}
+  encounterManager: {fileID: 0}
+  encounterPercent: 20
   encounterList:
-  - critter: {fileID: 0}
-    _percentage: 20
+  - encounterName: Test Encounter 1
+    critter1: {fileID: 11400000, guid: efbb357f6985abc4eb76a1914d0e31c6, type: 2}
+    critter2: {fileID: 0}
+    critter3: {fileID: 0}
+    _percentage: 60
+  - encounterName: Test Encounter 2
+    critter1: {fileID: 11400000, guid: efbb357f6985abc4eb76a1914d0e31c6, type: 2}
+    critter2: {fileID: 11400000, guid: efbb357f6985abc4eb76a1914d0e31c6, type: 2}
+    critter3: {fileID: 0}
+    _percentage: 40
 --- !u!1 &1418587676
 GameObject:
   m_ObjectHideFlags: 0
@@ -17110,7 +17079,7 @@ Transform:
   m_GameObject: {fileID: 2003104046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.126097, y: 0.4328429, z: -0.022228103}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20697,6 +20666,7 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 383885851}
   - {fileID: 2003104048}
   - {fileID: 619394802}
   - {fileID: 1872416590}
