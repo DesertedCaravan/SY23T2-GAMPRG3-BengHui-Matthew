@@ -35,37 +35,37 @@ public class CritterUI : MonoBehaviour
 
     public GameObject CritterInfo => critterInfo;
 
-    public void SetData(CritterData data)
+    public void SetCritterSlotData(CritterSlot slot)
     {
-        if (data.Sprite != null)
+        if (slot.BaseData.Sprite != null)
         {
-            critterIcon.sprite = data.Sprite;
+            critterIcon.sprite = slot.BaseData.Sprite;
         }
 
-        critterName.text = data.Name;
+        critterName.text = slot.Name;
 
-        critterLevel.text = "LV" + data.Level.ToString();
-        expTotal.text = "Exp Points: " + data.ExpPoints.ToString();
-        expNext.text = "To Next LV: " + data.CalculateExpNeeded().ToString();
+        critterLevel.text = "LV" + slot.Level.ToString();
+        expTotal.text = "Exp Points: " + slot.ExpPoints.ToString();
+        expNext.text = "To Next LV: " + slot.CalculateExpNeeded().ToString();
 
-        vitalityStat.text = data.CurrentVitality.ToString() + "/" + data.Vitality.ToString();
-        staminaStat.text = data.CurrentStamina.ToString() + "/" + data.Stamina.ToString();
-        reasonStat.text = data.CurrentReason.ToString() + "/" + data.Reason.ToString();
+        vitalityStat.text = slot.CurrentVitality.ToString() + "/" + slot.Vitality.ToString();
+        staminaStat.text = slot.CurrentStamina.ToString() + "/" + slot.Stamina.ToString();
+        reasonStat.text = slot.CurrentReason.ToString() + "/" + slot.Reason.ToString();
 
-        vitalitySlider.maxValue = data.Vitality;
-        vitalitySlider.value = data.CurrentVitality;
+        vitalitySlider.maxValue = slot.Vitality;
+        vitalitySlider.value = slot.CurrentVitality;
 
-        staminaSlider.maxValue = data.Stamina;
-        staminaSlider.value = data.CurrentStamina;
+        staminaSlider.maxValue = slot.Stamina;
+        staminaSlider.value = slot.CurrentStamina;
 
-        reasonSlider.maxValue = data.Reason;
-        reasonSlider.value = data.CurrentReason;
+        reasonSlider.maxValue = slot.Reason;
+        reasonSlider.value = slot.CurrentReason;
 
-        strengthStat.text = data.Strength.ToString();
-        toughnessStat.text = data.Toughness.ToString();
-        agilityStat.text = data.Agility.ToString();
-        powerStat.text = data.Power.ToString();
-        luckStat.text = data.Luck.ToString();
-        evasionStat.text = data.Evasion.ToString();
+        strengthStat.text = slot.Strength.ToString();
+        toughnessStat.text = slot.Toughness.ToString();
+        agilityStat.text = slot.Agility.ToString();
+        powerStat.text = slot.Power.ToString();
+        luckStat.text = slot.Luck.ToString();
+        evasionStat.text = slot.Evasion.ToString();
     }
 }

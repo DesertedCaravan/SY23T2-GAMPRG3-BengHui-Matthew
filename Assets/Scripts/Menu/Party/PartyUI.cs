@@ -130,7 +130,7 @@ public class PartyUI : OptionsUIBase
 
     private void UpdateHandler()
     {
-        partyUIList[0].GetComponent<CritterUI>().SetData(partyManager.Handler);
+        partyUIList[0].GetComponent<CritterUI>().SetCritterSlotData(partyManager.Handler);
     }
 
     public void UpdateCritterRoster()
@@ -151,7 +151,7 @@ public class PartyUI : OptionsUIBase
             }
             else
             {
-                partyUIList[i + 1].GetComponent<CritterUI>().SetData(partyManager.PartyRoster[i]);
+                partyUIList[i + 1].GetComponent<CritterUI>().SetCritterSlotData(partyManager.PartyRoster[i]);
 
                 if (partyPanel.activeSelf == true)
                 {
@@ -165,11 +165,11 @@ public class PartyUI : OptionsUIBase
     {
         if (_selectedCritter == 0)
         {
-            summaryUI.SetCritterData(partyManager.Handler);
+            summaryUI.SetCritterSlotData(partyManager.Handler);
         }
         else if (_selectedCritter >= 1 || _selectedCritter <= 3)
         {
-            summaryUI.SetCritterData(partyManager.PartyRoster[_selectedCritter - 1]);
+            summaryUI.SetCritterSlotData(partyManager.PartyRoster[_selectedCritter - 1]);
         }
 
         UpdateSelectedMove();

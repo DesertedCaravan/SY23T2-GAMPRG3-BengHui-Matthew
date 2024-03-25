@@ -16424,11 +16424,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partyUI: {fileID: 2003104051}
-  handler: {fileID: 11400000, guid: e9935cb3db958ae48988b86dd8c8e3f2, type: 2}
+  handler: {fileID: 11400000, guid: bae46c03682c7b04b96a6bd4f7eb012b, type: 2}
   partyRoster:
-  - {fileID: 11400000, guid: ca4351d8efea7f84387b15bd862e9ffa, type: 2}
-  - {fileID: 11400000, guid: 735608437dda902459335ff5a5dd14d0, type: 2}
-  - {fileID: 11400000, guid: fd3fae77c6b7e4641bcc8c7aa8372266, type: 2}
+  - {fileID: 11400000, guid: bae46c03682c7b04b96a6bd4f7eb012b, type: 2}
+  - {fileID: 11400000, guid: bae46c03682c7b04b96a6bd4f7eb012b, type: 2}
+  - {fileID: 11400000, guid: bae46c03682c7b04b96a6bd4f7eb012b, type: 2}
 --- !u!114 &1872416594
 MonoBehaviour:
   m_ObjectHideFlags: 0

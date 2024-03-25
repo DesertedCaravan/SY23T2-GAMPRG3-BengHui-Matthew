@@ -130,42 +130,42 @@ public class SummaryUI : MonoBehaviour
     public List<MoveData> MovesList => movesListHolder;
     public List<MoveUI> MovesUIList => movesUIList;
 
-    public void SetCritterData(CritterData data)
+    public void SetCritterSlotData(CritterSlot slot)
     {
-        if (data.Sprite != null)
+        if (slot.BaseData.Sprite != null)
         {
-            critterIcon.sprite = data.Sprite;
+            critterIcon.sprite = slot.BaseData.Sprite;
         }
 
-        critterName.text = data.Name;
-        critterSpeciesName.text = data.SpeciesName;
+        critterName.text = slot.Name;
+        critterSpeciesName.text = slot.BaseData.SpeciesName;
 
-        critterType1.text = SetType(data.Type1);
-        critterType2.text = SetType(data.Type2);
+        critterType1.text = SetType(slot.BaseData.Type1);
+        critterType2.text = SetType(slot.BaseData.Type2);
 
-        critterLevel.text = "LV" + data.Level.ToString();
-        expTotal.text = "Exp Points: " + data.ExpPoints.ToString();
-        expNext.text = "To Next LV: " + data.CalculateExpNeeded().ToString();
+        critterLevel.text = "LV" + slot.Level.ToString();
+        expTotal.text = "Exp Points: " + slot.ExpPoints.ToString();
+        expNext.text = "To Next LV: " + slot.CalculateExpNeeded().ToString();
 
-        vitalityStat.text = data.CurrentVitality.ToString() + "/" + data.Vitality.ToString();
-        staminaStat.text = data.CurrentStamina.ToString() + "/" + data.Stamina.ToString();
-        reasonStat.text = data.CurrentReason.ToString() + "/" + data.Reason.ToString();
+        vitalityStat.text = slot.CurrentVitality.ToString() + "/" + slot.Vitality.ToString();
+        staminaStat.text = slot.CurrentStamina.ToString() + "/" + slot.Stamina.ToString();
+        reasonStat.text = slot.CurrentReason.ToString() + "/" + slot.Reason.ToString();
 
-        vitalitySlider.maxValue = data.Vitality;
-        vitalitySlider.value = data.CurrentVitality;
+        vitalitySlider.maxValue = slot.Vitality;
+        vitalitySlider.value = slot.CurrentVitality;
 
-        staminaSlider.maxValue = data.Stamina;
-        staminaSlider.value = data.CurrentStamina;
+        staminaSlider.maxValue = slot.Stamina;
+        staminaSlider.value = slot.CurrentStamina;
 
-        reasonSlider.maxValue = data.Reason;
-        reasonSlider.value = data.CurrentReason;
+        reasonSlider.maxValue = slot.Reason;
+        reasonSlider.value = slot.CurrentReason;
 
-        strengthStat.text = data.Strength.ToString();
-        toughnessStat.text = data.Toughness.ToString();
-        agilityStat.text = data.Agility.ToString();
-        powerStat.text = data.Power.ToString();
-        luckStat.text = data.Luck.ToString();
-        evasionStat.text = data.Evasion.ToString();
+        strengthStat.text = slot.Strength.ToString();
+        toughnessStat.text = slot.Toughness.ToString();
+        agilityStat.text = slot.Agility.ToString();
+        powerStat.text = slot.Power.ToString();
+        luckStat.text = slot.Luck.ToString();
+        evasionStat.text = slot.Evasion.ToString();
 
         foreach (Image limb in limbsList)
         {
@@ -174,7 +174,15 @@ public class SummaryUI : MonoBehaviour
 
         for (int i = 0; i < limbsList.Count; i++)
         {
-            foreach (int limbValue in data.LimbValues)
+            foreach (int limbValue in slot.SetLimbValues)
+            {
+                if (i == limbValue)
+                {
+                    limbsList[i].color = new Color32(255, 255, 225, 100);
+                }
+            }
+
+            foreach (int limbValue in slot.LearnedLimbValues)
             {
                 if (i == limbValue)
                 {
@@ -185,14 +193,14 @@ public class SummaryUI : MonoBehaviour
 
         movesListHolder = new List<MoveData>();
 
-        for (int i = 0; i < data.SetMoves.Count; i++)
+        for (int i = 0; i < slot.SetMoves.Count; i++)
         {
-            movesListHolder.Add(data.SetMoves[i]);
+            movesListHolder.Add(slot.SetMoves[i]);
         }
 
-        for (int i = 0; i < data.LearnedMoves.Count; i++)
+        for (int i = 0; i < slot.LearnedMoves.Count; i++)
         {
-            movesListHolder.Add(data.LearnedMoves[i]);
+            movesListHolder.Add(slot.LearnedMoves[i]);
         }
         
         // Clear all exisiting child Game Objects in the Move List Scrollview Content
