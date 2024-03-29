@@ -102,13 +102,18 @@ public class PartyUI : OptionsUIBase
         if (switchDirection == false)
         {
             --_selectedCritter;
+            _selectedCritter = Mathf.Clamp(_selectedCritter, 0, partyUIList.Count - 1); // 0 is the Handler, which should always be present
         }
         else if (switchDirection == true)
         {
             ++_selectedCritter;
-        }
+            _selectedCritter = Mathf.Clamp(_selectedCritter, 0, partyUIList.Count - 1);
 
-        _selectedCritter = Mathf.Clamp(_selectedCritter, 0, partyUIList.Count - 1);
+            if (partyManager.PartyRoster[_selectedCritter - 1] == null)
+            {
+                _selectedCritter--;
+            }
+        }
 
         UpdateSelectCritter();
     }

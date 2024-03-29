@@ -382,6 +382,8 @@ public class DialogueBoxManager : MonoBehaviour
         }
         else
         {
+            PlayerController.instance.StartMovement(); // Allow player to move again
+
             currentInteraction.GetComponent<InteractableObject>().AllowInteraction(); // Allow player to interact with object again.
             currentInteraction.GetComponent<InteractableObject>().OnEndInteract(); // Runs code after dialogue is completed.
 
@@ -390,8 +392,6 @@ public class DialogueBoxManager : MonoBehaviour
             currentDialogueText = null;
 
             dialogueBox.gameObject.SetActive(false); // Make Dialogue Box not visible
-
-            PlayerController.instance.StartMovement(); // Allow player to move again
         }
     }
 

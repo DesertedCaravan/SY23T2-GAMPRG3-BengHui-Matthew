@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29548c7ae907634b804eaa6cd9371b2, type: 3}
+  m_Name: Handler
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e9935cb3db958ae48988b86dd8c8e3f2, type: 2}
+  _name: Wilbur
+  _level: 1
+  _expPoints: 0
+  _vitality: 11
+  _stamina: 9
+  _reason: 13
+  _currentVitality: 11
+  _currentStamina: 9
+  _currentReason: 13
+  _strength: 5
+  _toughness: 4
+  _agility: 5
+  _power: 4
+  _luck: 5
+  _evasion: 4
+  setLimbs: 070000000800000009000000
+  learnedLimbs: 
+  setMoves: []
+  learnedMoves: []

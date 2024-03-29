@@ -99,6 +99,8 @@ public class EncounterTile : InteractableObject
     {
         Debug.Log("INTERACT WITH " + name);
         Debug.Log(chosenEncounter.EncounterName);
+
+        encounterManager.StartEncounter(chosenEncounter.Critter1, chosenEncounter.Critter2, chosenEncounter.Critter3);
     }
 }
 
@@ -106,14 +108,14 @@ public class EncounterTile : InteractableObject
 public class EncounterData
 {
     [SerializeField] private string encounterName;
-    [SerializeField] private CritterData critter1;
-    [SerializeField] private CritterData critter2;
-    [SerializeField] private CritterData critter3;
+    [SerializeField] private CritterSlot critter1;
+    [SerializeField] private CritterSlot critter2;
+    [SerializeField] private CritterSlot critter3;
     [SerializeField] private int _percentage;
 
     public string EncounterName { get { return encounterName; } }
-    public CritterData Critter1 { get { return critter1; } }
-    public CritterData Critter2 { get { return critter2; } }
-    public CritterData Critter3 { get { return critter3; } }
+    public CritterSlot Critter1 { get { return critter1; } }
+    public CritterSlot Critter2 { get { return critter2; } }
+    public CritterSlot Critter3 { get { return critter3; } }
     public int Percentage { get { return _percentage; } }
 }

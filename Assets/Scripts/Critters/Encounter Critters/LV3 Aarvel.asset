@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29548c7ae907634b804eaa6cd9371b2, type: 3}
+  m_Name: LV3 Aarvel
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: efbb357f6985abc4eb76a1914d0e31c6, type: 2}
+  _name: Aarvel
+  _level: 3
+  _expPoints: 0
+  _vitality: 9
+  _stamina: 9
+  _reason: 12
+  _currentVitality: 9
+  _currentStamina: 9
+  _currentReason: 12
+  _strength: 5
+  _toughness: 5
+  _agility: 6
+  _power: 7
+  _luck: 7
+  _evasion: 6
+  setLimbs: 0a000000020000000300000004000000
+  learnedLimbs: 
+  setMoves:
+  - {fileID: 11400000, guid: 97b8af8519d8ce9428a1063bc19027ad, type: 2}
+  - {fileID: 11400000, guid: 63b679831fd6af146921aa17ac2122c5, type: 2}
+  - {fileID: 11400000, guid: 1fa4cba688b90e54ca68952ddffe4c37, type: 2}
+  learnedMoves: []

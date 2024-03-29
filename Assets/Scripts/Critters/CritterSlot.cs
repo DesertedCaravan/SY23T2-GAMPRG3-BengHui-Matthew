@@ -29,22 +29,24 @@ public class CritterSlot : ScriptableObject
     [SerializeField] private int _level;
     [SerializeField] private int _expPoints;
 
+    [Header("Health Stats")]
     // Calculated Health Stats
-    private int _vitality;
-    private int _stamina;
-    private int _reason;
+    [SerializeField] private int _vitality;
+    [SerializeField] private int _stamina;
+    [SerializeField] private int _reason;
 
-    private int _currentVitality;
-    private int _currentStamina;
-    private int _currentReason;
+    [SerializeField] private int _currentVitality;
+    [SerializeField] private int _currentStamina;
+    [SerializeField] private int _currentReason;
 
+    [Header("Battle Stats")]
     // Calculated Battle Stats
-    private int _strength;
-    private int _toughness;
-    private int _agility;
-    private int _power;
-    private int _luck;
-    private int _evasion;
+    [SerializeField] private int _strength;
+    [SerializeField] private int _toughness;
+    [SerializeField] private int _agility;
+    [SerializeField] private int _power;
+    [SerializeField] private int _luck;
+    [SerializeField] private int _evasion;
 
     [Header("Known Limbs")]
     [SerializeField] private List<Limb> setLimbs;
@@ -85,88 +87,94 @@ public class CritterSlot : ScriptableObject
 
     public void OnValidate()
     {
-        _vitality = CalculateStat(_data.BaseVitality);
-        _stamina = CalculateStat(_data.BaseStamina);
-        _reason = CalculateStat(_data.BaseReason);
-
-        _currentVitality = _vitality;
-        _currentStamina = _stamina;
-        _currentReason = _reason;
-
-        _strength = CalculateStat(_data.BaseStrength);
-        _toughness = CalculateStat(_data.BaseToughness);
-        _agility = CalculateStat(_data.BaseAgility);
-        _power = CalculateStat(_data.BasePower);
-        _luck = CalculateStat(_data.BaseLuck);
-        _evasion = CalculateStat(_data.BaseEvasion);
-
-        ///////////////////////////
-
-        _setLimbValues = new List<int>();
-
-        // Copy Limbs from Data to Slot
-        for (int i = 0; i <_data.LimbValues.Count; i++)
+        if (_data != null) // Ensure that there is something in the _data variable first
         {
-            _setLimbValues.Add(_data.LimbValues[i]);
-        }
+            _vitality = CalculateStat(_data.BaseVitality);
+            _stamina = CalculateStat(_data.BaseStamina);
+            _reason = CalculateStat(_data.BaseReason);
 
-        // Fill up setLimbs List with corresponding limbs
-        setLimbs.Clear();
+            _currentVitality = _vitality;
+            _currentStamina = _stamina;
+            _currentReason = _reason;
 
-        foreach (int limbEnum in _setLimbValues)
-        {
-            setLimbs.Add((Limb)limbEnum);
-        }
+            _strength = CalculateStat(_data.BaseStrength);
+            _toughness = CalculateStat(_data.BaseToughness);
+            _agility = CalculateStat(_data.BaseAgility);
+            _power = CalculateStat(_data.BasePower);
+            _luck = CalculateStat(_data.BaseLuck);
+            _evasion = CalculateStat(_data.BaseEvasion);
 
-        ///////////////////////////
+            ///////////////////////////
 
-        // Fill up learnedLimbValues List with corresponding integers
-        _learnedLimbValues.Clear();
+            _setLimbValues = new List<int>();
 
-        for (int i = 0; i < learnedLimbs.Count; i++)
-        {
-            _learnedLimbValues.Add((int)learnedLimbs[i]);
-        }
-
-        ///////////////////////////
-        
-        // Fill up setMoves List with corresponding moves
-        setMoves.Clear();
-
-        foreach (LevelMoves move in _data.LevelMoves)
-        {
-            if (move.GetLevel <= Level)
+            // Copy Limbs from Data to Slot
+            if (_data.LimbValues != null) // Bug Fix
             {
-                SetMoves.Add(move.GetMove);
-            }
-        }
-
-        ///////////////////////////
-        
-        // Check and make sure LearnedMoves reflects the known Limbs
-        foreach (MoveData move in LearnedMoves)
-        {
-            bool limbChecker = false;
-
-            foreach (Limb limb in setLimbs)
-            {
-                if (move.Limb == (int)limb)
+                for (int i = 0; i < _data.LimbValues.Count; i++)
                 {
-                    limbChecker = true;
+                    _setLimbValues.Add(_data.LimbValues[i]);
                 }
             }
 
-            foreach (Limb limb in learnedLimbs)
+            // Fill up setLimbs List with corresponding limbs
+            setLimbs = new List<Limb>();
+
+            foreach (int limbEnum in _setLimbValues)
             {
-                if (move.Limb == (int)limb)
+                setLimbs.Add((Limb)limbEnum);
+            }
+
+            ///////////////////////////
+
+            // Fill up learnedLimbValues List with corresponding integers
+            _learnedLimbValues = new List<int>();
+
+            for (int i = 0; i < learnedLimbs.Count; i++)
+            {
+                _learnedLimbValues.Add((int)learnedLimbs[i]);
+            }
+
+            ///////////////////////////
+
+            // Fill up setMoves List with corresponding moves
+            setMoves = new List<MoveData>();
+
+            foreach (LevelMoves move in _data.LevelMoves)
+            {
+                if (move.GetLevel <= Level)
                 {
-                    limbChecker = true;
+                    SetMoves.Add(move.GetMove);
                 }
             }
 
-            if (limbChecker == false)
+            ///////////////////////////
+
+            // Check and make sure LearnedMoves reflects the known Limbs
+            foreach (MoveData move in LearnedMoves)
             {
-                LearnedMoves.Remove(move);
+                bool limbChecker = false;
+
+                foreach (Limb limb in setLimbs)
+                {
+                    if (move.Limb == (int)limb)
+                    {
+                        limbChecker = true;
+                    }
+                }
+
+                foreach (Limb limb in learnedLimbs)
+                {
+                    if (move.Limb == (int)limb)
+                    {
+                        limbChecker = true;
+                    }
+                }
+
+                if (limbChecker == false)
+                {
+                    LearnedMoves.Remove(move);
+                }
             }
         }
     }

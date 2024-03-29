@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fce9fe0422a68748947c2845aa66dc6, type: 3}
   m_Name: 0. Handler
   m_EditorClassIdentifier: 
-  _name: Wilbur
   _speciesName: Handler
   _sprite: {fileID: -63028543, guid: c955a69b9207f91439596df453e00231, type: 3}
   type1: 0
   type2: 15
-  _level: 1
-  _expPoints: 0
   _growthRate: 1
   _baseVitality: 10
   _baseStamina: 8
@@ -31,11 +28,11 @@ MonoBehaviour:
   _baseEvasion: 3
   limbs: 070000000800000009000000
   levelMoves:
+  - level: 1
+    move: {fileID: 11400000, guid: a2f83b66c7040e74ba592534c217b56c, type: 2}
   - level: 4
     move: {fileID: 11400000, guid: cc0ea2cb49954f3439abdb560c2f9830, type: 2}
   - level: 8
     move: {fileID: 11400000, guid: 507f772ba53b49d4195dd580bc2ac17b, type: 2}
   - level: 12
     move: {fileID: 11400000, guid: 10899d4194142cc469f7fb7c4fbea1ae, type: 2}
-  setMoves: []
-  learnedMoves: []

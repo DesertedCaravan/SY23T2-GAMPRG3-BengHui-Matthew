@@ -9,6 +9,7 @@ public class SettingsManager : MonoBehaviour
 
     public SettingsUI SettingsUI => settingsUI;
 
+    /*
     // Convert to Singleton
     public static SettingsManager instance = null; // public static means that it can be accessed
 
@@ -23,7 +24,7 @@ public class SettingsManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    */
 
     // Start is called before the first frame update
     void Start()

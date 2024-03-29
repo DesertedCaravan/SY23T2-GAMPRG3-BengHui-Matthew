@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<InventorySlots> healingSlots;
     [SerializeField] private List<InventorySlots> buffingSlots;
     [SerializeField] private List<InventorySlots> permaSlots;
-    [SerializeField] private List<InventorySlots> equipSlots;
+    [SerializeField] private List<InventorySlots> toolSlots;
     [SerializeField] private List<InventorySlots> keySlots;
 
     // public List<InventoryLists> Lists => lists;
@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
     public List<InventorySlots> HealingSlots => healingSlots;
     public List<InventorySlots> BuffingSlots => buffingSlots;
     public List<InventorySlots> PermaSlots => permaSlots;
-    public List<InventorySlots> EquipSlots => equipSlots;
+    public List<InventorySlots> ToolSlots => toolSlots;
     public List<InventorySlots> KeySlots => keySlots;
 
     /*
@@ -66,7 +66,7 @@ public class InventoryManager : MonoBehaviour
         }
         else if (listNumber == 3)
         {
-            return EquipSlots;
+            return ToolSlots;
         }
         else if (listNumber == 4)
         {

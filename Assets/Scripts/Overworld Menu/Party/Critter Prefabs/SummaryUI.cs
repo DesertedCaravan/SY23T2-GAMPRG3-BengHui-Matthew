@@ -56,6 +56,7 @@ public class SummaryUI : MonoBehaviour
         OneEnemy,
         EnemyRow,
         EHandler,
+        AllOthers,
         All
     }
 
