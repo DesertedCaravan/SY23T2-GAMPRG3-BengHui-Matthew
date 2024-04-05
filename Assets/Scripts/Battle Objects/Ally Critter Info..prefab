@@ -987,16 +987,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8125a06fdab26d43a30003551eea96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allyInfo: {fileID: 4555199219249271617}
-  allyName: {fileID: 2896970411744395961}
-  allyLevel: {fileID: 3509647346133477268}
+  critterInfo: {fileID: 4555199219249271617}
+  critterName: {fileID: 2896970411744395961}
+  critterLevel: {fileID: 3509647346133477268}
   vitalityStat: {fileID: 699539898416057479}
   staminaStat: {fileID: 481672635365317790}
   reasonStat: {fileID: 2866070991091547708}
   vitalitySlider: {fileID: 4810997082308856301}
   staminaSlider: {fileID: 6573867772400464639}
   reasonSlider: {fileID: 6409687217884099879}
-  statHolder: {fileID: 4356060457460221217}
+  isAlly: 1
 --- !u!114 &4356060457460221217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,6 +1017,7 @@ MonoBehaviour:
   _maxVitality: 0
   _maxStamina: 0
   _maxReason: 0
+  critterUI: {fileID: 3192223358788219754}
 --- !u!1 &4843901656948619058
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,10 +16,6 @@ public class BattleManager : MonoBehaviour
     [Header("Enemy Row")]
     [SerializeField] private List<CritterSlot> enemyCritterList; // 4 slots
 
-    [SerializeField] private List<CritterSlot> critterList; // 8 slots
-
-    [Header("Turn Order")]
-    [SerializeField] private GameObject[] turnMarkers;
     private int _turn;
     private int _turnPhase;
     private bool _turnPhaseTransition;
@@ -66,7 +62,7 @@ public class BattleManager : MonoBehaviour
     // Ally2 = allTargets[2]
     // Ally3 = allTargets[3]
     // EnemyHandler = allTargets[4]
-    // Enemy1 = allTargets[1]
+    // Enemy1 = allTargets[5]
     // Enemy2 = allTargets[6]
     // Enemy3 = allTargets[7]
 
@@ -74,14 +70,36 @@ public class BattleManager : MonoBehaviour
     private ItemBase chosenItem;
     private int _selectedTarget;
 
-    [Header("Battle Phase")]
+    [Header("Raw Battle Phase Data")]
+    [SerializeField] private List<CritterSlot> critterList; // 8 slots
     [SerializeField] private List<BattleStats> battleStats; // 8 slots
-    [SerializeField] private List<ChosenTargets> chosenTargets; // depends on number of active allies
+
+    [Header("Refined Battle Phase Data")]
+    [SerializeField] private List<ChosenTargets> chosenTargets; // 8 slots
+    [SerializeField] private List<BattleStats> turnOrder; // Active critter slots only
+
+    private bool _startBattle; // battle phase begins
+    private bool _turnSet; // critter turns set
+    private bool _turnStart; // active critter can take turn
+
+    private int _currentCritter; // current critter move
+
+    private System.Random _rnd = new System.Random();
+
+    [Header("Dialogue Box Manager Updater")]
+    [SerializeField] protected BattleDialogueBoxManager dialogueBoxManager;
 
     // Start is called before the first frame update
     void Start()
     {
         _turnPhaseTransition = false;
+        _startBattle = false;
+        _turnSet = false;
+        _turnStart = false;
+
+        _turn = 1;
+
+        SetupCombatants();
 
         InitializeBattle();
     }
@@ -89,100 +107,104 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_turnPhase == 1 && _turnPhaseTransition == false) // Player selects battle commands
+        if (_startBattle == false)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                HandleCommandUpdate(true);
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                HandleCommandUpdate(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                SetupListItems();
-                StartCoroutine(CO_TurnPhaseForwardDelay());
-            }
-            else if (Input.GetKeyDown(KeyCode.Q) && _chosenAlly > 0)
-            {
-                PreviousCritter();
-            }
-        }
-
-        if (_turnPhase == 2 && _turnPhaseTransition == false)
-        {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                HandleListUpdate(true);
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                HandleListUpdate(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                SelectTarget();
-                StartCoroutine(CO_TurnPhaseForwardDelay());
-            }
-            else if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ClearListItems();
-                selectedUI.ClearData();
-
-                _selectedListItem = 0;
-
-                StartCoroutine(CO_TurnPhaseBackwardDelay());
-            }
-        }
-
-        if (_turnPhase == 3 && _turnPhaseTransition == false)
-        {
-            if (_selectAllTargets == false)
+            if (_turnPhase == 1 && _turnPhaseTransition == false) // Player selects battle commands
             {
                 if (Input.GetKeyDown(KeyCode.W))
                 {
-                    HandleTargetUpdate(true);
+                    HandleCommandUpdate(true);
                 }
                 else if (Input.GetKeyDown(KeyCode.S))
                 {
-                    HandleTargetUpdate(false);
+                    HandleCommandUpdate(false);
+                }
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    SetupListItems();
+                    StartCoroutine(CO_TurnPhaseForwardDelay());
+                }
+                else if (Input.GetKeyDown(KeyCode.Q) && _chosenAlly > 0)
+                {
+                    PreviousCritter();
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (_turnPhase == 2 && _turnPhaseTransition == false)
             {
-                ConfirmTarget();
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    HandleListUpdate(true);
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    HandleListUpdate(false);
+                }
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    SelectTarget();
+                    StartCoroutine(CO_TurnPhaseForwardDelay());
+                }
+                else if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    ClearListItems();
+                    selectedUI.ClearData();
+
+                    _selectedListItem = 0;
+
+                    StartCoroutine(CO_TurnPhaseBackwardDelay());
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
+
+            if (_turnPhase == 3 && _turnPhaseTransition == false)
             {
-                ClearSelect();
-                ClearTargets();
+                if (_selectAllTargets == false)
+                {
+                    if (Input.GetKeyDown(KeyCode.W))
+                    {
+                        HandleTargetUpdate(true);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        HandleTargetUpdate(false);
+                    }
+                }
 
-                _selectedTarget = 0;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ConfirmTarget();
+                }
+                else if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    ClearSelect();
+                    ClearTargets();
 
-                StartCoroutine(CO_TurnPhaseBackwardDelay());
+                    _selectedTarget = 0;
+
+                    StartCoroutine(CO_TurnPhaseBackwardDelay());
+                }
+            }
+        }
+        else if (_startBattle == true && _turnSet == true && _turnStart == true)
+        {
+            // Text display must be automatic
+            MoveResult();
+
+            _currentCritter++;
+
+            if (_currentCritter > turnOrder.Count - 1)
+            {
+                _turn++;
+                StartCoroutine(CO_NextTurn());
+
+                Debug.Log("Battle Turn Over!");
             }
         }
     }
 
     #region PhaseSetup
-
-    private void InitializeBattle()
-    {
-        _turn = 1;
-
-        _chosenAlly = 0;
-
-        SetupCombatants();
-
-        UnmarkTurnMarkers();
-
-        SetupAllyCommand();
-    }
-
     private void SetupCombatants()
     {
         critterList = new List<CritterSlot>();
@@ -209,7 +231,7 @@ public class BattleManager : MonoBehaviour
         critterList.Add(enemyCritterList[3]);
 
         // Go to BattleMenuUI and set UI and BattleStatHolders
-        
+
         for (int i = 0; i < critterList.Count; i++)
         {
             if (critterList[i] != null)
@@ -227,18 +249,27 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < critterList.Count; i++)
         {
             battleStats[i].SetCritterSlot = i;
-            battleStats[i].SetStatHolder = battleMenuUI.GetStatPanels[i].GetComponent<BattleStatHolder>();
+            battleStats[i].SetStatusHolder = battleMenuUI.GetStatPanels[i].GetComponent<BattleStatusHolder>();
         }
     }
 
-    private void UnmarkTurnMarkers()
+    private void InitializeBattle()
     {
-        foreach (GameObject marker in turnMarkers)
+        _chosenAlly = 0;
+
+        _startBattle = false;
+        _turnSet = false;
+        ActiveCritterTurnStart(false);
+
+        battleMenuUI.UnmarkTurnMarkers();
+        battleMenuUI.UnmarkTurnNumbers();
+
+        for (int i = 0; i < battleStats.Count; i++)
         {
-            marker.SetActive(false);
+            battleStats[i].ResetTurn();
         }
 
-        turnMarkers[0].SetActive(true);
+        SetupAllyCommand();
     }
 
     private void SetupAllyCommand()
@@ -546,7 +577,7 @@ public class BattleManager : MonoBehaviour
             {
                 for (int i = 0; i < allTargets.Count; i++)
                 {
-                    if (i != _chosenAlly && i != 0 && 1 != 4 && critterList[i] != null) // not the user or either handler
+                    if (i != _chosenAlly && i != 0 && i != 4 && critterList[i] != null) // not the user or either handler
                     {
                         availableTargets.Add(allTargets[i]);
                         availableSlots.Add(i);
@@ -555,11 +586,11 @@ public class BattleManager : MonoBehaviour
 
                 _selectAllTargets = true;
             }
-            else if (chosenMove.Target == 7) // All
+            else if (chosenMove.Target == 8) // All
             {
                 for (int i = 0; i < allTargets.Count; i++)
                 {
-                    if (i != 0 && 1 != 4 && critterList[i] != null) // not either handler
+                    if (i != 0 && i != 4 && critterList[i] != null) // not either handler
                     {
                         availableTargets.Add(allTargets[i]);
                         availableSlots.Add(i);
@@ -645,15 +676,6 @@ public class BattleManager : MonoBehaviour
 
     #endregion
 
-    #region BattlePhase1Calculations
-    #endregion
-
-    #region BattleDialogueBox
-    #endregion
-
-    #region BattleEndTurn
-    #endregion
-
     #region CritterChange
 
     private void NextCritter()
@@ -687,12 +709,14 @@ public class BattleManager : MonoBehaviour
 
         if (_chosenAlly < allyCritterList.Count)
         {
-            turnMarkers[_chosenAlly].SetActive(true); // Set Active next marker if an ally is present
+            battleMenuUI.DisplayTurnMarker(_chosenAlly); // Set Active next marker if an ally is present
         }
 
         if (_chosenAlly == allyCritterList.Count) // allyCritterList is filled up at the start of battle, so no null indexes
         {
-            Debug.Log("Start Battle");
+            Debug.Log("BattleStart");
+            _startBattle = true;
+            StartBattlePhase();
         }
         else
         {
@@ -702,14 +726,314 @@ public class BattleManager : MonoBehaviour
 
     private void PreviousCritter()
     {
+        ClearChosenTargetsList(_chosenAlly);
+
         if (_chosenAlly != 0)
         {
-            turnMarkers[_chosenAlly].SetActive(false);
+            battleMenuUI.HideTurnMarker(_chosenAlly);
         }
 
         _chosenAlly--;
 
+        if (_chosenAlly == 0)
+        {
+            ClearChosenTargetsList(_chosenAlly);
+        }
+
         StartCoroutine(CO_ChangeAlly());
+    }
+
+    private void ClearChosenTargetsList(int index)
+    {
+        chosenTargets[index].SetCritterSlot = null;
+        chosenTargets[index].SetChosenMove = null;
+        chosenTargets[index].SetChosenItem = null;
+        chosenTargets[index].chosenTargets.Clear();
+    }
+
+    #endregion
+
+    #region BattleCalculations
+    // Important Variable Lists
+
+    // List<CritterSlot> critterList;               Permanent Critter Slot Data (can have empty slots)
+    // private List<BattleStats> battleStats;       Temporary Critter Slot Data
+
+    // private List<ChosenTargets> chosenTargets;   Targets for the Current Turn (can have empty slots)
+    // private List<BattleStats> turnOrder;         Attacking Critters (only has full slots)
+
+    private void StartBattlePhase()
+    {
+        SetEnemyMoves();
+
+        ClearTurnOrder();
+        CalculateTurnOrder();
+        ArrangeTurnOrder();
+        DisplayTurnOrder();
+
+        _currentCritter = 0;
+        _turnSet = true;
+
+        ActiveCritterTurnStart(true);
+    }
+
+    private void SetEnemyMoves()
+    {
+        ClearChosenTargetsList(4);
+        ClearChosenTargetsList(5);
+        ClearChosenTargetsList(6);
+        ClearChosenTargetsList(7);
+
+        // 4: EHandler
+        // 5: Enemy1
+        // 6: Enemy2
+        // 7: Enemy3
+
+        for (int i = 4; i <= 7; i++)
+        {
+            if (critterList[i] != null)
+            {
+                SetEnemyTargets(i);
+            }
+        }
+    }
+
+    private void SetEnemyTargets(int enemy)
+    {
+        // Set Enemy ChosenTargets Critter Data -----------------------------
+
+        chosenTargets[enemy].SetCritterSlot = critterList[enemy];
+
+        // Create Temporary Move List
+        List<MoveData> moveHolder = new List<MoveData>();
+
+        foreach (MoveData move in critterList[enemy].SetMoves)
+        {
+            moveHolder.Add(move);
+        }
+
+        foreach (MoveData move in critterList[enemy].LearnedMoves)
+        {
+            moveHolder.Add(move);
+        }
+
+        int randomMove = _rnd.Next(0, moveHolder.Count);
+
+        // Set Enemy ChosenTargets Move Data -----------------------------
+
+        chosenTargets[enemy].SetChosenMove = moveHolder[randomMove];
+
+        // Set Enemy ChosenTargets Target(s) Data -----------------------------
+
+        if (moveHolder[randomMove].Target == 0) // Self
+        {
+            chosenTargets[enemy].chosenTargets.Add(enemy);
+        }
+        else if (moveHolder[randomMove].Target == 1) // OneAlly
+        {
+            // Set Enemy Targets
+            List<int> randomTargets = new List<int>();
+
+            for (int j = 5; j <= 7; j++)
+            {
+                if (critterList[j] != null)
+                {
+                    randomTargets.Add(j);
+                }
+            }
+
+            int randomAlly = _rnd.Next(0, randomTargets.Count);
+
+            chosenTargets[enemy].chosenTargets.Add(randomTargets[randomAlly]);
+        }
+        else if (chosenMove.Target == 2) // AllyRow
+        {
+            for (int j = 5; j <= 7; j++)
+            {
+                if (critterList[j] != null)
+                {
+                    chosenTargets[enemy].chosenTargets.Add(j);
+                }
+            }
+        }
+        else if (chosenMove.Target == 3) // PHandler
+        {
+            if (critterList[4] != null)
+            {
+                chosenTargets[enemy].chosenTargets.Add(4);
+            }
+        }
+        else if (chosenMove.Target == 4) // OneEnemy
+        {
+            // Set Enemy Targets
+            List<int> randomTargets = new List<int>();
+
+            for (int j = 1; j <= 3; j++)
+            {
+                if (critterList[j] != null)
+                {
+                    randomTargets.Add(j);
+                }
+            }
+
+            int randomAlly = _rnd.Next(0, randomTargets.Count);
+
+            chosenTargets[enemy].chosenTargets.Add(randomTargets[randomAlly]);
+        }
+        else if (chosenMove.Target == 5) // EnemyRow
+        {
+            for (int j = 1; j <= 3; j++)
+            {
+                if (critterList[j] != null)
+                {
+                    chosenTargets[enemy].chosenTargets.Add(j);
+                }
+            }
+        }
+        else if (chosenMove.Target == 6) // EHandler
+        {
+            if (critterList[0] != null)
+            {
+                chosenTargets[enemy].chosenTargets.Add(0);
+            }
+        }
+        else if (chosenMove.Target == 7) // AllOthers
+        {
+            for (int j = 0; j < allTargets.Count; j++)
+            {
+                if (j != (enemy + 4) && j != 0 && j != 4 && critterList[j] != null) // not the user or either handler
+                {
+                    chosenTargets[enemy].chosenTargets.Add(j);
+                }
+            }
+        }
+        else if (chosenMove.Target == 8) // All
+        {
+            for (int j = 0; j < allTargets.Count; j++)
+            {
+                if (j != 0 && j != 4 && critterList[j] != null) // not either handler
+                {
+                    chosenTargets[enemy].chosenTargets.Add(j);
+                }
+            }
+        }
+    }
+
+    private void ClearTurnOrder()
+    {
+        for (int i = 0; i < critterList.Count; i++)
+        {
+            battleStats[i].SetTurnOrder = 0;
+        }
+    }
+
+    private void CalculateTurnOrder()
+    {
+        for (int i = 0; i < critterList.Count; i++)
+        {
+            if (critterList[i] != null)
+            {
+                // maxValue of Random is exclusive
+                // minValue of Random is inclusive
+                // Turn Order: Agi * Agi. Mod * (Random.Range(0, Luck + 26) + 75) / 100
+                battleStats[i].SetTurnOrder = critterList[i].Agility * battleStats[i].GetStatusHolder.CheckStatMod(2) * (_rnd.Next(0, critterList[i].Luck + 26) + 75) / 100;
+            }
+        }
+    }
+
+    private void ArrangeTurnOrder()
+    {
+        // Check how many active Critters there are
+        int active = 0;
+
+        foreach (CritterSlot activeSlots in critterList)
+        {
+            if (activeSlots != null)
+            {
+                active++;
+            }
+        }
+
+        // Organize turnOrder List
+        turnOrder = new List<BattleStats>();
+
+        for (int i = 0; i < active; i++)
+        {
+            float turnStatHolder = 0;
+            int critterSlotHolder = 0;
+
+            int previousIndex = 0;
+
+            for (int j = 0; j < battleStats.Count; j++)
+            {
+                // Note: Turn order is correct, but 0 remains unchecked
+
+                if (battleStats[j].GetTurnOrder > turnStatHolder && battleStats[j].CheckTurn() == false)
+                {
+                    turnStatHolder = battleStats[j].GetTurnOrder;
+                    critterSlotHolder = battleStats[j].GetCritterSlot;
+
+                    battleStats[j].TakeTurn();
+
+                    if (previousIndex != 0)
+                    {
+                        battleStats[previousIndex].ResetTurn();
+                    }
+
+                    previousIndex = j;
+                }
+            }
+
+            turnOrder.Add(battleStats[critterSlotHolder]);
+        }
+    }
+
+    private void DisplayTurnOrder()
+    {
+        battleMenuUI.UnmarkTurnNumbers();
+
+        for (int i = 0; i < turnOrder.Count; i++)
+        {
+            battleMenuUI.MarkTurnNumber(turnOrder[i].GetCritterSlot, i + 1);
+        }
+    }
+
+    #endregion
+
+    #region BattleDialogueBox
+    // Important Variable Lists
+
+    // List<CritterSlot> critterList;               Permanent Critter Slot Data (can have empty slots)
+    // private List<BattleStats> battleStats;       Temporary Critter Slot Data
+
+    // private List<ChosenTargets> chosenTargets;   Targets for the Current Turn (can have empty slots)
+    // private List<BattleStats> turnOrder;         Attacking Critters (only has full slots)
+
+    private void MoveResult()
+    {
+        ActiveCritterTurnStart(false);
+
+        // Required Data
+        // - Slot Side (int) ==> turnOrder[_currentCritter].GetCritterSlot
+        // - Active Critter (CritterSlot) ==> critterList[turnOrder[_currentCritter].GetCritterSlot] // get the slot index of the current acting Critter in the Turn Order
+        // - Move Taken (MoveData) ==> chosenTargets[turnOrder[_currentCritter].GetCritterSlot]
+        // - Move Result (MoveCalculation bool)
+
+        dialogueBoxManager.StartBattlePhase(turnOrder[_currentCritter].GetCritterSlot, critterList[turnOrder[_currentCritter].GetCritterSlot].Name, chosenTargets[turnOrder[_currentCritter].GetCritterSlot].GetChosenMove.Name, MoveCalculation());
+    }
+
+    private bool MoveCalculation()
+    {
+        return false;
+    }
+
+    #endregion
+
+    #region BattleEndTurn
+
+    public void ActiveCritterTurnStart(bool state)
+    {
+        _turnStart = state;
     }
 
     #endregion
@@ -758,31 +1082,65 @@ public class BattleManager : MonoBehaviour
         _turnPhaseTransition = false;
     }
 
+    IEnumerator CO_NextTurn()
+    {
+        _turnPhaseTransition = true;
+
+        InitializeBattle();
+
+        yield return new WaitForSeconds(0.5f);
+
+        _turnPhaseTransition = false;
+    }
+
     #endregion
-    
+
     [Serializable]
     public class BattleStats
     {
+        [Header("Main Info.")]
         [SerializeField] private int _critterSlot;
-        [SerializeField] private BattleStatHolder statHolder;
+        [SerializeField] private BattleStatusHolder statHolder;
+
+        [Header("Turn Order")]
+        [SerializeField] private float _turnOrder;
+        [SerializeField] private bool _turnTaken;
 
         public int GetCritterSlot { get { return _critterSlot; } }
         public int SetCritterSlot { set { _critterSlot = value; } }
 
-        public BattleStatHolder GetStatHolder { get { return statHolder; } }
-        public BattleStatHolder SetStatHolder { set { statHolder = value; } }
+        public BattleStatusHolder GetStatusHolder { get { return statHolder; } }
+        public BattleStatusHolder SetStatusHolder { set { statHolder = value; } }
+
+        public float GetTurnOrder { get { return _turnOrder; } }
+        public float SetTurnOrder { set { _turnOrder = value; } }
+
+        public bool CheckTurn()
+        {
+            return _turnTaken;
+        }
+
+        public void TakeTurn()
+        {
+            _turnTaken = true;
+        }
+
+        public void ResetTurn()
+        {
+            _turnTaken = false;
+        }
     }
 
     [Serializable] // Allows this to be displayed in the inspector (requires using System)
     public class ChosenTargets
     {
-        [SerializeField] private CritterSlot _ally;
+        [SerializeField] private CritterSlot _critterSlot;
         [SerializeField] private MoveData chosenMove;
         [SerializeField] private ItemBase chosenItem;
         [SerializeField] public List<int> chosenTargets;
 
-        public CritterSlot GetCritterSlot { get { return _ally; } }
-        public CritterSlot SetCritterSlot { set { _ally = value; } }
+        public CritterSlot GetCritterSlot { get { return _critterSlot; } }
+        public CritterSlot SetCritterSlot { set { _critterSlot = value; } }
 
         public MoveData GetChosenMove { get { return chosenMove; } }
         public MoveData SetChosenMove { set { chosenMove = value; } }

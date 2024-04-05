@@ -762,7 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 789758785428522455}
-  - component: {fileID: 3937120031233171845}
+  - component: {fileID: 6880726730722811413}
   - component: {fileID: 4407479973033784159}
   m_Layer: 5
   m_Name: Enemy Critter Info.
@@ -792,7 +792,7 @@ RectTransform:
   m_AnchoredPosition: {x: -275, y: -320}
   m_SizeDelta: {x: 220, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3937120031233171845
+--- !u!114 &6880726730722811413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -801,16 +801,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4555199219249271617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 227b5e96636d64e4fb461a472046ad5a, type: 3}
+  m_Script: {fileID: 11500000, guid: c8125a06fdab26d43a30003551eea96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyInfo: {fileID: 5911138950326854613}
-  enemyName: {fileID: 2896970411744395961}
-  enemyLevel: {fileID: 3509647346133477268}
+  critterInfo: {fileID: 4555199219249271617}
+  critterName: {fileID: 2896970411744395961}
+  critterLevel: {fileID: 3509647346133477268}
+  vitalityStat: {fileID: 0}
+  staminaStat: {fileID: 0}
+  reasonStat: {fileID: 0}
   vitalitySlider: {fileID: 4810997082308856301}
   staminaSlider: {fileID: 575955775919588359}
   reasonSlider: {fileID: 1669219540535434384}
-  statHolder: {fileID: 4407479973033784159}
+  isAlly: 0
 --- !u!114 &4407479973033784159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,6 +834,7 @@ MonoBehaviour:
   _maxVitality: 0
   _maxStamina: 0
   _maxReason: 0
+  critterUI: {fileID: 6880726730722811413}
 --- !u!1 &4976954436874745076
 GameObject:
   m_ObjectHideFlags: 0
