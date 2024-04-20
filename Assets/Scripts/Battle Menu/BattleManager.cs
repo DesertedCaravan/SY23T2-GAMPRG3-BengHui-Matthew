@@ -1160,6 +1160,7 @@ public class BattleManager : MonoBehaviour
     private void MoveCalculation(int userInt, CritterSlot userData, BattleStatusHolder userStatus, MoveData move, List<int> targetInts, List<CritterSlot> targetData, List<BattleStatusHolder> targetStatus)
     {
         List<bool> hitOutcome = new List<bool>();
+        List<int> hitDamage = new List<int>();
 
         // Cost Reduction
         userStatus.SetStaminaStatus(-move.StaminaCost); // negative to indicate lost stamina
@@ -1227,7 +1228,17 @@ public class BattleManager : MonoBehaviour
                     if (damage > 0)
                     {
                         targetStatus[i].SetVitalityStatus(-damage); // negative to indicate lost health
+
+                        hitDamage.Add(damage);
                     }
+                    else
+                    {
+                        hitDamage.Add(0);
+                    }
+                }
+                else
+                {
+                    hitDamage.Add(0);
                 }
 
                 // Effect Chance (based on damage hit rate)
@@ -1342,6 +1353,7 @@ public class BattleManager : MonoBehaviour
             else
             {
                 hitOutcome.Add(false);
+                hitDamage.Add(0);
             }
         }
 
@@ -1351,17 +1363,19 @@ public class BattleManager : MonoBehaviour
         // - Move Taken (MoveData)
         // - Move Result (MoveCalculation bool)
 
-        dialogueBoxManager.StartBattlePhase(userInt, userData.Name, move.Name, hitOutcome, MoveCheck());
+        List<string> targetNames = new List<string>();
+
+        foreach (CritterSlot slot in targetData)
+        {
+            targetNames.Add(slot.Name);
+        }
+
+        dialogueBoxManager.StartBattlePhase(userInt, userData.Name, move.Name, targetInts, targetNames, hitOutcome, hitDamage);
     }
 
     private void ItemCalculation(int userInt, CritterSlot userData, ItemBase item, List<int> targetInts, List<CritterSlot> targetData, List<BattleStatusHolder> targetStatus)
     {
 
-    }
-
-    private bool MoveCheck()
-    {
-        return false;
     }
 
     #endregion

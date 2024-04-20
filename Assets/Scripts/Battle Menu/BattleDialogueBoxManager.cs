@@ -65,7 +65,7 @@ public class BattleDialogueBoxManager : MonoBehaviour
         }
     }
 
-    public void StartBattlePhase(int slotSide, string activeCritter, string chosenMove, List<bool> moveOutcome, bool result)
+    public void StartBattlePhase(int activeCritterInt, string activeCritterName, string chosenMove, List<int> targetInts, List<string> activeTargetsName, List<bool> moveOutcome, List<int> moveDamage)
     {
         _startBattlePhase = true;
 
@@ -75,32 +75,36 @@ public class BattleDialogueBoxManager : MonoBehaviour
 
         textIndex = 0;
 
-        if (slotSide >= 0 && slotSide <= 4) // For PHandler, Ally Critters and EHandler
+        if (activeCritterInt >= 0 && activeCritterInt <= 4) // For PHandler, Ally Critters and EHandler
         {
-            currentDialogueBox.Add(activeCritter + " used " + chosenMove + "!");
-            // currentDialogueText = activeCritter + " used " + chosenMove + "!";
+            currentDialogueBox.Add(activeCritterName + " used " + chosenMove + "!");
         }
         else
         {
-            currentDialogueBox.Add("Enemy's " + activeCritter + " used " + chosenMove + "!");
-            // currentDialogueText = "Enemy's " + activeCritter + " used " + chosenMove + "!";
+            currentDialogueBox.Add("The enemy " + activeCritterName + " used " + chosenMove + "!");
         }
 
         
         textIndex++;
 
-        foreach (bool outcome in moveOutcome)
+        for (int i = 0; i < moveOutcome.Count; i++)
         {
-            if (outcome == true)
+            if (moveOutcome[i] == true)
             {
-                currentDialogueBox.Add("Hit!");
+                if (targetInts[i] >= 0 && targetInts[i] <= 4) // For PHandler, Ally Critters and EHandler
+                {
+                    currentDialogueBox.Add("The attack dealt " + moveDamage[i] + " damage to " + activeTargetsName[i] + "!");
+                }
+                else
+                {
+                    currentDialogueBox.Add("The attack dealt " + moveDamage[i] + " damage to the enemy " + activeTargetsName[i] + "!");
+                }
             }
             else
             {
-                currentDialogueBox.Add("Missed!");
+                currentDialogueBox.Add("The attack missed!");
             }
         }
-        
 
         dialogueBox.gameObject.SetActive(true); // Make Dialogue Box visible
 
