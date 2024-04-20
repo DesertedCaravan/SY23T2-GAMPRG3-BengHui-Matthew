@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Chomp
   _info: The user takes a bite out of the target. Chance to restore 20% Vitality.
+  damageCategory: 0
   type: 0
   limb: 4
-  damageCategory: 0
   _staminaCost: 5
   _reasonCost: 0
   target: 4
   _damage: 60
   _accuracy: 100
-  save: 1
+  save: 2
   effects:
   - {fileID: 11400000, guid: 03353dddf5e067d459b733a81f63a59f, type: 2}

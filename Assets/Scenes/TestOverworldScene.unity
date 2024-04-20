@@ -2298,6 +2298,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControllerRef: {fileID: 1872416591}
+  partyManager: {fileID: 1872416593}
+  eventSystem: {fileID: 391759662}
+  mainCamera: {fileID: 519420028}
+  battleParticipants: []
 --- !u!1 &391759662
 GameObject:
   m_ObjectHideFlags: 0
@@ -13405,14 +13409,16 @@ MonoBehaviour:
   interactDialogue: {fileID: 11400000, guid: 3e09ddac4e4e2ee498cdd68cd399f98d, type: 2}
   interactedDialogue: {fileID: 11400000, guid: 3e09ddac4e4e2ee498cdd68cd399f98d, type: 2}
   encounterManager: {fileID: 383885852}
-  encounterPercent: 20
+  encounterPercent: 100
   encounterList:
   - encounterName: Test Encounter 1
+    enemyHandler: {fileID: 0}
     critter1: {fileID: 11400000, guid: c5d6393bc33ad7448838063d247d12c1, type: 2}
     critter2: {fileID: 0}
     critter3: {fileID: 0}
     _percentage: 60
   - encounterName: Test Encounter 2
+    enemyHandler: {fileID: 0}
     critter1: {fileID: 11400000, guid: 488fff9dc871cdd42a62c23d1e634e10, type: 2}
     critter2: {fileID: 0}
     critter3: {fileID: 0}

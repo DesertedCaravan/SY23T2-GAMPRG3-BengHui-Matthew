@@ -10,9 +10,12 @@ public class BattleMenuUI : MonoBehaviour
     [SerializeField] private GameObject[] SpritePanels;
     [SerializeField] private GameObject[] StatPanels;
 
-    [Header("Turn Order")]
-    [SerializeField] private GameObject[] turnMarkers; // Player side only
-    [SerializeField] private GameObject[] turnNumbers; // All critter slots
+    [Header("Turn")]
+    [SerializeField] private GameObject turnNumber;
+
+    [Header("Critter Order")]
+    [SerializeField] private GameObject[] orderMarkers; // Player side only
+    [SerializeField] private GameObject[] orderNumbers; // All critter slots
 
     public GameObject[] GetStatPanels { get { return StatPanels; } }
 
@@ -33,37 +36,42 @@ public class BattleMenuUI : MonoBehaviour
         StatPanels[pos].gameObject.SetActive(false);
     }
 
-    public void UnmarkTurnMarkers()
+    public void SetTurnNumber(int turn)
     {
-        foreach (GameObject marker in turnMarkers)
+        turnNumber.GetComponent<TextMeshProUGUI>().text = "Turn " + turn.ToString();
+    }
+
+    public void UnmarkOrderMarkers()
+    {
+        foreach (GameObject marker in orderMarkers)
         {
             marker.SetActive(false);
         }
 
-        turnMarkers[0].SetActive(true);
+        orderMarkers[0].SetActive(true);
     }
 
-    public void DisplayTurnMarker(int ally)
+    public void DisplayOrderMarker(int ally)
     {
-        turnMarkers[ally].SetActive(true);
+        orderMarkers[ally].SetActive(true);
     }
 
-    public void HideTurnMarker(int ally)
+    public void HideOrderMarker(int ally)
     {
-        turnMarkers[ally].SetActive(false);
+        orderMarkers[ally].SetActive(false);
     }
 
-    public void UnmarkTurnNumbers()
+    public void UnmarkOrderNumbers()
     {
-        foreach (GameObject number in turnNumbers)
+        foreach (GameObject number in orderNumbers)
         {
             number.SetActive(false);
         }
     }
 
-    public void MarkTurnNumber(int number, int order)
+    public void MarkOrderNumber(int number, int order)
     {
-        turnNumbers[number].SetActive(true);
-        turnNumbers[number].GetComponent<TextMeshProUGUI>().text = order.ToString();
+        orderNumbers[number].SetActive(true);
+        orderNumbers[number].GetComponent<TextMeshProUGUI>().text = order.ToString();
     }
 }

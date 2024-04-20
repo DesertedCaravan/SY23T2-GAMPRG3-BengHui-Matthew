@@ -33,7 +33,7 @@ public class BattleCritterUI : MonoBehaviour
         {
             vitalityStat.text = statHolder.GetVitality.ToString() + "/" + statHolder.GetMaxVitality.ToString();
             staminaStat.text = statHolder.GetStamina.ToString() + "/" + statHolder.GetMaxStamina.ToString();
-            reasonStat.text = statHolder.GetReason.ToString() + "/" + statHolder.GetReason.ToString();
+            reasonStat.text = statHolder.GetReason.ToString() + "/" + statHolder.GetMaxReason.ToString();
         }
 
         vitalitySlider.maxValue = statHolder.GetMaxVitality;

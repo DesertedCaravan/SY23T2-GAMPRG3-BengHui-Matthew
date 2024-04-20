@@ -301,6 +301,38 @@ public class CritterSlot : ScriptableObject
         LearnedMoves.RemoveAt(move);
     }
 
+    public int GetStat(int stat)
+    {
+        if (stat == 1)
+        {
+            return Strength;
+        }
+        else if (stat == 2)
+        {
+            return Toughness;
+        }
+        else if (stat == 3)
+        {
+            return Agility;
+        }
+        else if (stat == 4)
+        {
+            return Power;
+        }
+        else if (stat == 5)
+        {
+            return Luck;
+        }
+        else if (stat == 6)
+        {
+            return Evasion;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     #endregion
 }
 

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Bite
   _info: The user sinks their fangs into the target's flesh.
+  damageCategory: 0
   type: 0
   limb: 4
-  damageCategory: 0
   _staminaCost: 3
   _reasonCost: 0
   target: 4
   _damage: 40
   _accuracy: 100
-  save: 1
+  save: 2
   effects: []

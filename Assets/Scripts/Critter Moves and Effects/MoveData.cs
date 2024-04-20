@@ -61,13 +61,14 @@ public class MoveData : ScriptableObject
 
     public enum MoveSave
     {
+        // Based on EffectData class
+        None,
         Strength,
         Toughness,
         Agility,
         Power,
         Luck,
-        Evasion,
-        None
+        Evasion
     }
 
     [Header("Move Info")]

@@ -15,14 +15,14 @@ MonoBehaviour:
   _name: Fracture
   _info: The user slams their horns into the target to break their guard. Chance
     to reduce the target's toughness.
+  damageCategory: 0
   type: 0
   limb: 3
-  damageCategory: 0
   _staminaCost: 4
   _reasonCost: 0
   target: 4
   _damage: 50
   _accuracy: 80
-  save: 2
+  save: 3
   effects:
   - {fileID: 11400000, guid: f1b65a91288f07647a09f2d517a07ea2, type: 2}

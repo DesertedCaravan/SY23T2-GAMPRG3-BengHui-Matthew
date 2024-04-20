@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Nibble
   _info: The user nips at the target's flesh with their front teeth.
+  damageCategory: 0
   type: 0
   limb: 4
-  damageCategory: 0
   _staminaCost: 1
   _reasonCost: 0
   target: 4
   _damage: 20
   _accuracy: 100
-  save: 1
+  save: 2
   effects: []

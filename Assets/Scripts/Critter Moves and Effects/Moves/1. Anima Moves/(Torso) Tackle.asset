@@ -22,5 +22,5 @@ MonoBehaviour:
   target: 4
   _damage: 60
   _accuracy: 90
-  save: 1
+  save: 2
   effects: []

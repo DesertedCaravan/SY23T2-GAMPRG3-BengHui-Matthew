@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Slice
   _info: The user makes a precise attack on a weak point in the target's body.
+  damageCategory: 0
   type: 0
   limb: 6
-  damageCategory: 0
   _staminaCost: 3
   _reasonCost: 0
   target: 4
   _damage: 40
   _accuracy: 100
-  save: 2
+  save: 3
   effects: []

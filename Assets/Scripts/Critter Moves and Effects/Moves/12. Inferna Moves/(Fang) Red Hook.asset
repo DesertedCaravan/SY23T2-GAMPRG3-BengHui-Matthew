@@ -23,6 +23,6 @@ MonoBehaviour:
   target: 4
   _damage: 20
   _accuracy: 100
-  save: 1
+  save: 2
   effects:
   - {fileID: 11400000, guid: 5e0f0a466e7257345bf3f8c2ab7fd4fb, type: 2}

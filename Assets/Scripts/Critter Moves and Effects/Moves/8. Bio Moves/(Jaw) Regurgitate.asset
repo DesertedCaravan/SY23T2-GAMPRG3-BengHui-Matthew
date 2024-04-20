@@ -23,7 +23,7 @@ MonoBehaviour:
   target: 0
   _damage: 0
   _accuracy: 90
-  save: 6
+  save: 0
   effects:
   - {fileID: 11400000, guid: 2753c5d677b41574fa83196566f940ff, type: 2}
   - {fileID: 11400000, guid: 891b64fb401ea2c45b1b89bfd65ba110, type: 2}

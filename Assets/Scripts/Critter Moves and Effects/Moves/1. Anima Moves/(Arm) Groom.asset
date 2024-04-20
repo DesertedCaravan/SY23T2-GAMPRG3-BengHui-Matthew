@@ -15,14 +15,14 @@ MonoBehaviour:
   _name: Groom
   _info: The user cleans themselves to improve their performance. Raises the user's
     luck.
+  damageCategory: 0
   type: 0
   limb: 7
-  damageCategory: 0
   _staminaCost: 3
   _reasonCost: 0
   target: 0
   _damage: 0
   _accuracy: 90
-  save: 6
+  save: 0
   effects:
   - {fileID: 11400000, guid: eab9b9eadd41d7141bb02b9f0dee3744, type: 2}

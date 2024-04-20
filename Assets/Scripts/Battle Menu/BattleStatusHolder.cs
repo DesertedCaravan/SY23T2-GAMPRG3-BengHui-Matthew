@@ -19,13 +19,15 @@ public class BattleStatusHolder : MonoBehaviour
 
     [Header("Stat Modifiers")]
     [SerializeField] private List<TempStatModifiers> statModList;
-    // 0 - Strength
-    // 1 - Toughness
-    // 2 - Agility
-    // 3 - Power
-    // 4 - Luck
-    // 5 - Evasion
-    // 6 - Accuracy
+
+    // Based on EffectData class
+    // 1 - Strength
+    // 2 - Toughness
+    // 3 - Agility
+    // 4 - Power
+    // 5 - Luck
+    // 6 - Evasion
+    // 7 - Accuracy
 
     [Header("Battle Critter UI Updater")]
     [SerializeField] private BattleCritterUI critterUI;
@@ -97,23 +99,60 @@ public class BattleStatusHolder : MonoBehaviour
         critterUI.SetReasonData(this);
     }
 
-    public void ReduceAllStatModDuration()
+    public void AddEffect(EffectData effect)
+    {
+        TempStatModifiers newMod = new TempStatModifiers();
+
+        newMod.SetEffectData = effect;
+        newMod.SetStatModDuration = effect.Duration;
+
+        statModList.Add(newMod);
+    }
+
+    public void ReduceAllEffectDuration()
     {
         foreach(TempStatModifiers statMod in statModList)
         {
-            //statMod.statModDuration
+            int duration = statMod.GetStatModDuration;
+            duration--;
+
+            statMod.SetStatModDuration = duration;
+        }
+
+        // Transfer Method
+        List<TempStatModifiers> tempList = new List<TempStatModifiers>();
+
+        foreach (TempStatModifiers statMod in statModList)
+        {
+            if (statMod.GetStatModDuration > 0)
+            {
+                tempList.Add(statMod);
+            }
+        }
+
+        statModList = new List<TempStatModifiers>();
+
+        foreach (TempStatModifiers statMod in tempList)
+        {
+            statModList.Add(statMod);
         }
     } 
-    
-    public float CheckStatMod(int stat)
+
+    public float CheckStatMod(int stat) // for Stat Stage Change only
     {
         float _statModHolder = 0;
 
+        if (statModList.Count == 0)
+        {
+            return 1.0f;
+        }
+
         for (int i = 0; i < statModList.Count; i++)
         {
-            if (statModList[i].GetStatMod == i)
+            if (statModList[i].GetEffectData.Type == 0 && statModList[i].GetEffectData.Stat == stat)
             {
-                _statModHolder += i;
+                Debug.Log("Type detected!!!!!!!");
+                _statModHolder += statModList[i].GetEffectData.StatStageChange;
             }
         }
 
@@ -121,7 +160,7 @@ public class BattleStatusHolder : MonoBehaviour
 
         if (_statModHolder == 0)
         {
-            return 1;
+            return 1.0f;
         }
         else if (_statModHolder > 0)
         {
@@ -136,7 +175,7 @@ public class BattleStatusHolder : MonoBehaviour
         }
         else if (_statModHolder < 0)
         {
-            return 2 / (2 - _statModHolder);
+            return 2.0f / (2.0f - _statModHolder);
 
             // -1: 2/3
             // -2: 2/4
@@ -147,7 +186,7 @@ public class BattleStatusHolder : MonoBehaviour
         }
         else
         {
-            return 1;
+            return 1.0f;
         }
     }
 }
@@ -155,11 +194,16 @@ public class BattleStatusHolder : MonoBehaviour
 [Serializable]
 public class TempStatModifiers
 {
-    [SerializeField] private int _statMod;
+    [SerializeField] private EffectData _effectData;
     [SerializeField] private int _statModDuration;
 
-    public int GetStatMod { get { return _statMod; } }
-    public int SetStatMod { set { _statMod = value; } }
+    public EffectData GetEffectData { get { return _effectData; } }
+    public EffectData SetEffectData { set { _effectData = value; } }
     public int GetStatModDuration { get { return _statModDuration; } }
     public int SetStatModDuration { set { _statModDuration = value; } }
+
+    public void ReduceStatModDuration()
+    {
+        _statModDuration--;
+    }
 }

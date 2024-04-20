@@ -15,14 +15,14 @@ MonoBehaviour:
   _name: Slash
   _info: The user sticks their claws deep into the target's body. Chance to inflict
     bleeding.
+  damageCategory: 0
   type: 0
   limb: 6
-  damageCategory: 0
   _staminaCost: 4
   _reasonCost: 0
   target: 4
   _damage: 50
   _accuracy: 100
-  save: 2
+  save: 3
   effects:
   - {fileID: 11400000, guid: 391c1ea6f4c1af241877ec0c9ccd20fd, type: 2}

@@ -12,6 +12,7 @@ public class BattleDialogueBoxManager : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private TextMeshProUGUI textComponent;
     private string currentDialogueText = null;
+    private List<string> currentDialogueBox = null;
 
     [Header("Text Data")]
     private int textIndex; // Current index in text array
@@ -49,7 +50,7 @@ public class BattleDialogueBoxManager : MonoBehaviour
     {
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && _startBattlePhase == true)
         {
-            if (textComponent.text == currentDialogueText)
+            if (textComponent.text == currentDialogueBox[textIndex])
             {
                 // Move to next text box
                 NextLine();
@@ -59,23 +60,47 @@ public class BattleDialogueBoxManager : MonoBehaviour
                 // Skip the text loading and display the entire text box
 
                 StopAllCoroutines();
-                textComponent.text = currentDialogueText;
+                textComponent.text = currentDialogueBox[textIndex];
             }
         }
     }
 
-    public void StartBattlePhase(int slotSide, string activeCritter, string chosenMove, bool result)
+    public void StartBattlePhase(int slotSide, string activeCritter, string chosenMove, List<bool> moveOutcome, bool result)
     {
         _startBattlePhase = true;
 
+        // Setup currentDialogueBox
+        currentDialogueText = null;
+        currentDialogueBox = new List<string>();
+
+        textIndex = 0;
+
         if (slotSide >= 0 && slotSide <= 4) // For PHandler, Ally Critters and EHandler
         {
-            currentDialogueText = activeCritter + " used " + chosenMove + "!";
+            currentDialogueBox.Add(activeCritter + " used " + chosenMove + "!");
+            // currentDialogueText = activeCritter + " used " + chosenMove + "!";
         }
         else
         {
-            currentDialogueText = "Enemy's " + activeCritter + " used " + chosenMove + "!";
+            currentDialogueBox.Add("Enemy's " + activeCritter + " used " + chosenMove + "!");
+            // currentDialogueText = "Enemy's " + activeCritter + " used " + chosenMove + "!";
         }
+
+        
+        textIndex++;
+
+        foreach (bool outcome in moveOutcome)
+        {
+            if (outcome == true)
+            {
+                currentDialogueBox.Add("Hit!");
+            }
+            else
+            {
+                currentDialogueBox.Add("Missed!");
+            }
+        }
+        
 
         dialogueBox.gameObject.SetActive(true); // Make Dialogue Box visible
 
@@ -86,7 +111,7 @@ public class BattleDialogueBoxManager : MonoBehaviour
 
     void NextLine()
     {
-        if (textIndex < 0) // rework if there's more than one text box // Original: textIndex < currentDialogueBox.Dialogue.Length - 1
+        if (textIndex < currentDialogueBox.Count - 1) // rework if there's more than one text box
         {
             textIndex++; // move to next index
 
@@ -123,6 +148,8 @@ public class BattleDialogueBoxManager : MonoBehaviour
         }
 
         // Current Typing Effect (higher textSpeed results in a faster text speed)
+
+        currentDialogueText = currentDialogueBox[textIndex];
 
         float t = 0;
         int charIndex = 0;
@@ -172,12 +199,13 @@ public class BattleDialogueBoxManager : MonoBehaviour
         textDelay = textDelayDefault;
 
         currentDialogueText = null;
+        currentDialogueBox = new List<string>();
 
         _startBattlePhase = false;
 
         dialogueBox.gameObject.SetActive(false); // Make Dialogue Box not visible
 
-        battleManager.ActiveCritterTurnStart(true); // allow for next active critter to make move
+        battleManager.ActiveCritterMoveStart(true); // allow for next active critter to make move
     }
 
     private readonly struct Punctuation
